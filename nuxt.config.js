@@ -7,7 +7,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'hasura-gql-mapbox',
+    title: 'Hasura + Nuxt & MapboxGL',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -17,10 +17,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: [{ src: '~/assets/css/global.css', lang: 'css' }],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [{ src: '@/plugins/composition-api', mode: 'client' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -34,6 +34,18 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
+  // Read more: https://tailwindcss.nuxtjs.org/
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: true,
+    config: {},
+  },
+  // Read more: https://color-mode.nuxtjs.org/#tailwindcss-dark-mode
+  colorMode: {
+    // remove -mode suffix for Tailwind Dark mode support
+    classSuffix: '',
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -48,4 +60,4 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
-}
+};
