@@ -16,8 +16,24 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  loading: { color: '#FCFFCF' },
+  loadingIndicator: {
+    name: 'folding-cube',
+    color: '#FCFFCF',
+    background: 'white',
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [{ src: '~/assets/css/global.css', lang: 'css' }],
+  css: [
+    { src: '~/assets/css/global.css', lang: 'css' },
+    { src: 'mapbox-gl/dist/mapbox-gl.css', lang: 'css' },
+    { src: 'v-mapbox/dist/v-mapbox.css', lang: 'css' },
+  ],
+
+  // Nuxt env variables (https://nuxtjs.org/api/configuration-env/)
+  env: {
+    mapToken: process.env.MAP_TOKEN || '',
+    appVersion: process.env.npm_package_version || '0.0.0',
+  },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [{ src: '@/plugins/composition-api', mode: 'client' }],
@@ -33,6 +49,8 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://color-mode.nuxtjs.org/#tailwind-v18
+    '@nuxtjs/color-mode',
   ],
   // Read more: https://tailwindcss.nuxtjs.org/
   tailwindcss: {
@@ -57,6 +75,37 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
+
+  // PWA module configuration (https://go.nuxtjs.dev/pwa)
+  pwa: {
+    // https://pwa.nuxtjs.org/meta
+    meta: {
+      name: 'Nuxt, Hasura & Mapbox',
+      theme_color: '#FCFFCF',
+      author: 'Vinayak Kulkarni',
+      lang: 'en',
+    },
+    // https://pwa.nuxtjs.org/manifest
+    manifest: {
+      name: 'Nuxt with Hasura.io',
+      short_name: 'NHM',
+      description: 'Nuxt with Hasura, GraphQL & mapbox-gl',
+      categories: ['Hasura', 'Apollo', 'GraphQL', 'Web Based GIS'],
+      theme_color: '#FCFFCF',
+      background_color: '#FEFFEF',
+      lang: 'en',
+    },
+  },
+
+  // Read more: https://typescript.nuxtjs.org/guide/lint.html#runtime-lint
+  typescript: {
+    typeCheck: {
+      eslint: {
+        enabled: true,
+        files: './',
+      },
+    },
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},

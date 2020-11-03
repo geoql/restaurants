@@ -1,20 +1,79 @@
 <template>
-  <div class="flex items-center justify-center h-screen">
-    <h1>{{ state.msg }}</h1>
+  <div class="w-full h-full pt-20 pb-20">
+    <client-only>
+      <mgl-map
+        :class="{ 'opacity-75': state.loading }"
+        :mapbox-gl="state.mapboxgl"
+        :access-token="state.mapOptions.accessToken"
+        :map-style.sync="state.mapOptions.style"
+        :center="state.mapOptions.center"
+        :zoom="state.mapOptions.zoom"
+        :max-zoom="state.mapOptions.maxZoom"
+        :cross-source-collisions="false"
+        :fail-if-major-performance-caveat="false"
+        :preserve-drawing-buffer="true"
+        :hash="false"
+        @load="mapLoaded"
+        @click="mapClicked"
+      >
+        <mgl-navigation-control position="top-right" />
+        <mgl-geolocate-control position="top-left" />
+        <mgl-fullscreen-control position="top-right" />
+        <mgl-scale-control position="bottom-left" />
+        <slot />
+      </mgl-map>
+    </client-only>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, reactive } from '@vue/composition-api';
+  /* eslint-disable no-console */
+  import {
+    defineComponent,
+    reactive,
+    shallowReadonly,
+  } from '@vue/composition-api';
+  import {
+    MglMap,
+    MglNavigationControl,
+    MglGeolocateControl,
+    MglFullscreenControl,
+    MglScaleControl,
+  } from 'v-mapbox';
+  import mapboxgl from 'mapbox-gl';
 
   export default defineComponent({
     name: 'IndexPage',
+    components: {
+      MglMap,
+      MglNavigationControl,
+      MglGeolocateControl,
+      MglFullscreenControl,
+      MglScaleControl,
+    },
     setup() {
       const state = reactive({
-        msg: 'Hasura + Nuxt + Mapbox',
+        mapOptions: {
+          accessToken: process.env.mapToken,
+          style: 'mapbox://styles/mapbox/dark-v9?optimize=true',
+          center: [78.96, 20.59],
+          zoom: 4,
+        },
+        mapboxgl,
+        loading: false,
       });
+      let map = shallowReadonly({} as mapboxgl.Map);
+      function mapLoaded(e: any) {
+        map = e.map;
+        console.log('map', map);
+      }
+      function mapClicked(e: object) {
+        console.log('e', e);
+      }
       return {
         state,
+        mapLoaded,
+        mapClicked,
       };
     },
   });
