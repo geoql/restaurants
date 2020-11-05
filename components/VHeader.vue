@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-center justify-between w-full h-20 px-4">
+  <div
+    class="flex items-center justify-between w-full h-20 px-4 border-b border-gray-300 dark:border-gray-700"
+  >
     <h2 class="text-xl">
       <span class="mr-2 blinking-heart">❤️</span> Nuxt + Hasura with Mapbox-gl
     </h2>
