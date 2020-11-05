@@ -12,14 +12,46 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
+      { name: 'msapplication-TileColor', content: '#303030' },
+      { name: 'msapplication-TileImage', content: '/icons/mstile-150x150.png' },
+
+      { name: 'theme-color', content: '#303030' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/icons/favicon.ico',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/icons/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/icons/favicon-16x16.png',
+      },
+      {
+        rel: 'mask-icon',
+        href: '/icons/safari-pinned-tab.svg',
+        color: '#5bbad5',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/icons/apple-touch-icon.png',
+      },
+    ],
   },
 
-  loading: { color: '#FCFFCF' },
+  loading: { color: '#303030' },
   loadingIndicator: {
     name: 'folding-cube',
-    color: '#FCFFCF',
+    color: '#303030',
     background: 'white',
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -81,7 +113,7 @@ export default {
     // https://pwa.nuxtjs.org/meta
     meta: {
       name: 'Nuxt, Hasura & Mapbox',
-      theme_color: '#FCFFCF',
+      theme_color: '#303030',
       author: 'Vinayak Kulkarni',
       lang: 'en',
     },
@@ -91,8 +123,8 @@ export default {
       short_name: 'NHM',
       description: 'Nuxt with Hasura, GraphQL & mapbox-gl',
       categories: ['Hasura', 'Apollo', 'GraphQL', 'Web Based GIS'],
-      theme_color: '#FCFFCF',
-      background_color: '#FEFFEF',
+      theme_color: '#303030',
+      background_color: '#303030',
       lang: 'en',
     },
   },
