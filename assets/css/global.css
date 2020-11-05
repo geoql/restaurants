@@ -29,6 +29,10 @@ body {
   margin: 0;
 }
 
+canvas {
+  outline: none !important;
+}
+
 /* For Login Page */
 .blinking-heart {
   display: inline-block;
