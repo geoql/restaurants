@@ -40,6 +40,7 @@
     MglFullscreenControl,
     MglScaleControl,
   } from 'v-mapbox';
+  import MapboxDraw from '@mapbox/mapbox-gl-draw';
   import mapboxgl from 'mapbox-gl';
 
   export default defineComponent({
@@ -63,9 +64,11 @@
         loading: false,
       });
       let map = shallowReadonly({} as mapboxgl.Map);
+      const draw = new MapboxDraw();
       function mapLoaded(e: any) {
         map = e.map;
-        console.log('map', map);
+        // add draw control
+        map.addControl(draw, 'top-left');
       }
       function mapClicked(e: object) {
         console.log('e', e);

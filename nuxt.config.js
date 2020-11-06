@@ -56,9 +56,10 @@ export default {
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    { src: '~/assets/css/global.css', lang: 'css' },
     { src: 'mapbox-gl/dist/mapbox-gl.css', lang: 'css' },
     { src: 'v-mapbox/dist/v-mapbox.css', lang: 'css' },
+    { src: '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css', lang: 'css' },
+    { src: '~/assets/css/global.css', lang: 'css' },
   ],
 
   // Nuxt env variables (https://nuxtjs.org/api/configuration-env/)
@@ -140,5 +141,11 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    extend(config) {
+      config.node = {
+        fs: 'empty',
+      };
+    },
+  },
 };
