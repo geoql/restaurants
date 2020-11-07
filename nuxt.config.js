@@ -111,6 +111,11 @@ export default {
 
   // PWA module configuration (https://go.nuxtjs.dev/pwa)
   pwa: {
+    // https://pwa.nuxtjs.org/icon
+    icon: {
+      source: 'static/icons/icon.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+    },
     // https://pwa.nuxtjs.org/meta
     meta: {
       name: 'Nuxt, Hasura & Mapbox',
