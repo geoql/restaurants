@@ -1,5 +1,7 @@
 # hasura-gql-mapbox
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1466d682-7a44-480e-990f-1af959f28ba5/deploy-status)](https://app.netlify.com/sites/nuxt-hasura-mapbox/deploys)
+
 ## Build Setup
 
 ```bash
