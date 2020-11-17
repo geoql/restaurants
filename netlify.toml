@@ -2,5 +2,5 @@
    command = "npm run dev"
 
 [build]
-  command = "npm run generate"
-  publish = "dist"
+   command = "npm run generate"
+   publish = "dist"
