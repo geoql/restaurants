@@ -69,7 +69,7 @@ export default {
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '@/plugins/composition-api', mode: 'client' }],
+  plugins: ['~/plugins/apollo'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -84,6 +84,8 @@ export default {
     '@nuxtjs/tailwindcss',
     // https://color-mode.nuxtjs.org/#tailwind-v18
     '@nuxtjs/color-mode',
+    // https://composition-api.nuxtjs.org/getting-started/setup
+    '@nuxtjs/composition-api',
   ],
   // Read more: https://tailwindcss.nuxtjs.org/
   tailwindcss: {
@@ -104,6 +106,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // apollo module
+    '@nuxtjs/apollo',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -132,6 +136,14 @@ export default {
       theme_color: '#303030',
       background_color: '#303030',
       lang: 'en',
+    },
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.HASURA_ENDPOINT,
+      },
     },
   },
 

@@ -5,11 +5,15 @@ declare module 'v-mapbox' {
   class MglGeolocateControl extends Vue {}
   class MglFullscreenControl extends Vue {}
   class MglScaleControl extends Vue {}
+  class MglMarker extends Vue {}
+  class MglPopup extends Vue {}
   export {
     MglMap,
     MglNavigationControl,
     MglGeolocateControl,
     MglFullscreenControl,
     MglScaleControl,
+    MglMarker,
+    MglPopup,
   };
 }
