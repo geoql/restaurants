@@ -90,7 +90,7 @@
       restaurants: {
         query: fetchRestaurants,
         variables: {
-          bound: 750,
+          bound: 1000,
           lat: latitude,
           long: longitude,
         },
@@ -113,7 +113,7 @@
         if (!state.loading) {
           state.loading = true;
           await $apollo.queries.restaurants.setVariables({
-            bound: 750,
+            bound: 1000,
             lat: event.type !== 'draw.delete' ? coordinates.latitude : 0,
             long: event.type !== 'draw.delete' ? coordinates.longitude : 0,
           });
