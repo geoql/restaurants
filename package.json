@@ -23,7 +23,7 @@
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/axios": "^5.12.3",
     "@nuxtjs/composition-api": "^0.16.4",
-    "@nuxtjs/pwa": "^3.3.1",
+    "@nuxtjs/pwa": "^3.3.2",
     "@tailwindcss/custom-forms": "^0.2.1",
     "@tailwindcss/typography": "^0.2.0",
     "@turf/centroid": "^6.0.2",
