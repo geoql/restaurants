@@ -21,7 +21,7 @@
     "@mapbox/mapbox-gl-draw": "^1.2.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "@nuxtjs/composition-api": "^0.16.4",
     "@nuxtjs/pwa": "^3.3.1",
     "@tailwindcss/custom-forms": "^0.2.1",
