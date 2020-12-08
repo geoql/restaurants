@@ -27,7 +27,7 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "@tailwindcss/typography": "^0.2.0",
     "@turf/centroid": "^6.0.2",
-    "@types/mapbox-gl": "^1.12.8",
+    "@types/mapbox-gl": "^1.12.9",
     "core-js": "^3.8.1",
     "graphql-tag": "^2.11.0",
     "mapbox-gl": "^1.13.0",
