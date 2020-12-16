@@ -7,7 +7,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Hasura + Nuxt & MapboxGL',
+    title: 'Restaurants :: GeoQL',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -47,12 +47,13 @@ export default {
       },
     ],
   },
-
-  loading: { color: '#303030' },
+  loading: {
+    color: '#303030',
+  },
   loadingIndicator: {
     name: 'folding-cube',
     color: '#303030',
-    background: 'white',
+    background: '#1a202c',
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
@@ -62,9 +63,12 @@ export default {
     { src: '~/assets/css/global.css', lang: 'css' },
   ],
 
-  // Nuxt env variables (https://nuxtjs.org/api/configuration-env/)
-  env: {
-    mapToken: process.env.MAP_TOKEN || '',
+  /**
+   * Article: https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/#introducing-the-nuxtjs-runtime-config
+   * Docs: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config/
+   */
+  publicRuntimeConfig: {
+    mapToken: process.env.MAP_TOKEN || null,
     appVersion: process.env.npm_package_version || '0.0.0',
   },
 
@@ -122,14 +126,14 @@ export default {
     },
     // https://pwa.nuxtjs.org/meta
     meta: {
-      name: 'Nuxt, Hasura & Mapbox',
+      name: 'Restaurants',
       theme_color: '#303030',
       author: 'Vinayak Kulkarni',
       lang: 'en',
     },
     // https://pwa.nuxtjs.org/manifest
     manifest: {
-      name: 'Nuxt with Hasura.io',
+      name: 'Restaurants in 🇮🇳',
       short_name: 'NHM',
       description: 'Nuxt with Hasura, GraphQL & mapbox-gl',
       categories: ['Hasura', 'Apollo', 'GraphQL', 'Web Based GIS'],
@@ -159,7 +163,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    extend(config) {
+    extend(config: any) {
       config.node = {
         fs: 'empty',
       };
