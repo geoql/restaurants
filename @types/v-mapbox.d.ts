@@ -7,6 +7,7 @@ declare module 'v-mapbox' {
   class MglScaleControl extends Vue {}
   class MglMarker extends Vue {}
   class MglPopup extends Vue {}
+  class MglGeojsonLayer extends Vue {}
   export {
     MglMap,
     MglNavigationControl,
@@ -15,5 +16,6 @@ declare module 'v-mapbox' {
     MglScaleControl,
     MglMarker,
     MglPopup,
+    MglGeojsonLayer,
   };
 }

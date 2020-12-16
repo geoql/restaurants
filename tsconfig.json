@@ -29,9 +29,7 @@
       "@types/mapbox-gl",
     ]
   },
-  "files": [
-    "types/v-mapbox.d.ts",
-  ],
+  "include": ["@types/**/*"],
   "exclude": [
     "node_modules",
     ".nuxt",

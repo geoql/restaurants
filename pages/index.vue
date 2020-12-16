@@ -28,11 +28,48 @@
     </div>
     <common-map
       :class="{ 'opacity-75': state.loading }"
+      :draw="state.map.drawAreaOfInterest"
+      @map-load="mapLoaded"
+      @style-changed="(e) => (state.map.styleChanged = e)"
       @draw-create="refetchRestaurants"
-      @draw-update="refetchRestaurants"
-      @draw-delete="refetchRestaurants"
     >
-      <div v-if="restaurants && restaurants.length > 0">
+      <!-- Area of Interest -->
+      <div class="absolute top-0 left-0 flex items-center">
+        <div class="relative">
+          <button
+            type="button"
+            class="p-2 m-2 rounded shadow outline-none focus:outline-none hover:shadow-sm"
+            :class="{
+              'bg-purple-700 text-white': state.map.drawAreaOfInterest,
+              'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white': !state
+                .map.drawAreaOfInterest,
+            }"
+            @click="state.map.drawAreaOfInterest = true"
+          >
+            Draw Area of Interest
+          </button>
+        </div>
+      </div>
+      <!-- Drawn GeoJSON -->
+      <mgl-geojson-layer
+        v-if="state.map.loaded && state.map.styleChanged"
+        source-id="drawn-geojson-source"
+        :source.sync="drawnGeoJSON.source"
+        layer-id="drawn-geojson-layer"
+        :layer.sync="drawnGeoJSON.layer"
+        :clear-source="true"
+        :replace="true"
+      />
+      <!-- Restaurants -->
+      <div
+        v-if="
+          state.map.loaded &&
+          state.map.styleChanged &&
+          !state.map.drawAreaOfInterest &&
+          restaurants &&
+          restaurants.length > 0
+        "
+      >
         <mgl-marker
           v-for="({ lat, long, name }, idx) in restaurants"
           :key="idx"
@@ -75,8 +112,9 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, reactive } from '@nuxtjs/composition-api';
-  import { MglMarker, MglPopup } from 'v-mapbox';
+  import { computed, defineComponent, reactive } from '@nuxtjs/composition-api';
+  import { MglMarker, MglPopup, MglGeojsonLayer } from 'v-mapbox';
+  import { FeatureCollection } from 'geojson';
   import { fetchRestaurants } from '@/gql/fetchRestaurants';
   import { useApollo } from '@/plugins/apollo';
   import CommonMap from '@/components/CommonMap.vue';
@@ -103,19 +141,81 @@
       CommonMap,
       MglMarker,
       MglPopup,
+      MglGeojsonLayer,
     },
     setup() {
       const $apollo = useApollo();
       const state = reactive({
+        map: {
+          loaded: false as boolean,
+          styleChanged: false as boolean,
+          drawAreaOfInterest: false as boolean,
+          drawnGeoJSON: {
+            type: 'FeatureCollection',
+            features: [],
+          } as FeatureCollection,
+        },
         loading: false,
       });
-      async function refetchRestaurants({ event, coordinates }: any) {
+      const drawnGeoJSON = reactive({
+        source: computed(() => {
+          if (!state.map.drawAreaOfInterest) {
+            return {
+              type: 'geojson',
+              data: state.map.drawnGeoJSON,
+            };
+          }
+          return {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [],
+            },
+          };
+        }),
+        layer: computed(() => {
+          return {
+            id: 'drawn-geojson-layer',
+            type: 'fill',
+            source: 'drawn-geojson-source',
+            paint: {
+              'fill-color': '#fff',
+              'fill-opacity': 0.55,
+              'fill-outline-color': '#f5f5f5',
+            },
+            layout: {
+              visibility: state.map.drawAreaOfInterest ? 'none' : 'visible',
+            },
+          };
+        }),
+      });
+
+      /**
+       * If map is loaded
+       * @returns void
+       */
+      function mapLoaded(loaded: boolean): void {
+        state.map.loaded = loaded;
+      }
+      /**
+       * Fetch restaurants from gql server
+       * @returns Promise
+       */
+      async function refetchRestaurants({
+        event,
+        center,
+      }: {
+        event: any;
+        center: { latitude: number; longitude: number };
+      }): Promise<void> {
         if (!state.loading) {
           state.loading = true;
+          state.map.drawAreaOfInterest = false;
+          state.map.drawnGeoJSON.features = event.features;
           await $apollo.queries.restaurants.setVariables({
             bound: 1000,
-            lat: event.type !== 'draw.delete' ? coordinates.latitude : 0,
-            long: event.type !== 'draw.delete' ? coordinates.longitude : 0,
+            lat: center.latitude,
+            long: center.longitude,
           });
           await $apollo.queries.restaurants.refetch();
           state.loading = false;
@@ -123,6 +223,8 @@
       }
       return {
         state,
+        drawnGeoJSON,
+        mapLoaded,
         refetchRestaurants,
       };
     },
