@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+  import { defineComponent } from '@nuxtjs/composition-api';
   import VHeader from '@/components/VHeader.vue';
   import VFooter from '@/components/VFooter.vue';
 
