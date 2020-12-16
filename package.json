@@ -1,7 +1,7 @@
 {
   "name": "hasura-gql-mapbox",
   "description": "Hasura GraphQL + Nuxt & Mapbox",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
