@@ -93,10 +93,11 @@
 
   export default defineComponent({
     name: 'Footer',
-    setup() {
+    setup(_, { root }) {
+      const { $config } = root;
       const state = reactive({
         date: new Date().getFullYear(),
-        appVersion: process.env.appVersion,
+        appVersion: $config.appVersion,
       });
       return {
         state,
