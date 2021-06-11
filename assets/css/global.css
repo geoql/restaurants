@@ -61,3 +61,10 @@ canvas {
     transform: scale(1);
   }
 }
+.restaurant-popup div {
+  @apply dark:text-gray-200 text-gray-800 bg-gray-200 dark:bg-gray-800;
+}
+
+.restaurant-popup .mapboxgl-popup-tip {
+  display: none;
+}

@@ -20,11 +20,21 @@
       <slot />
       <div class="absolute top-0 right-0 m-2">
         <div
-          class="relative flex items-center justify-center text-sm text-gray-800 bg-white rounded-md dark:bg-gray-700 dark:text-white"
+          v-click-outside="() => (state.basemaps.shown = false)"
+          class="
+            relative
+            flex
+            items-center
+            justify-center
+            text-sm text-gray-800
+            bg-white
+            rounded-md
+            dark:bg-gray-700 dark:text-white
+          "
           title="Basemaps"
           :class="{
             'dark:bg-gray-800 bg-gray-200': state.basemaps.shown,
-            'hover:dark:bg-gray-800 hover:bg-gray-200': !state.basemaps.shown,
+            'hover:bg-gray-200 hover:dark:bg-gray-800 ': !state.basemaps.shown,
           }"
         >
           <div
@@ -65,7 +75,17 @@
           >
             <div
               v-if="state.basemaps.shown"
-              class="absolute top-0 right-0 mr-16 origin-right bg-gray-100 rounded-md shadow-lg dark:bg-gray-700"
+              class="
+                absolute
+                top-0
+                right-0
+                mr-16
+                origin-right
+                bg-gray-100
+                rounded-md
+                shadow-lg
+                dark:bg-gray-700
+              "
             >
               <basemaps
                 :data="state.basemaps.data"
@@ -98,6 +118,7 @@
   import MapboxDraw from '@mapbox/mapbox-gl-draw';
   import centroid from '@turf/centroid';
   import { Feature, Polygon } from 'geojson';
+  import { getRuntimeVM } from '~/utils/runtime';
 
   export default defineComponent({
     components: {
@@ -118,14 +139,15 @@
         required: true,
       },
     },
-    setup(props, { emit, root }) {
-      const { $config } = root;
+    setup(props, { emit }) {
+      const { $config } = getRuntimeVM();
       const state = reactive({
         mapOptions: {
           accessToken: $config.mapToken,
           style: 'mapbox://styles/mapbox/dark-v10?optimize=true',
           center: [77.607, 12.996],
           zoom: 12,
+          maxZoom: 22,
         },
         mapboxgl,
         basemaps: {

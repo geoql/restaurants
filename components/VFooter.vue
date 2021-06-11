@@ -1,6 +1,15 @@
 <template>
   <div
-    class="flex items-center justify-between w-full h-20 px-4 border-t border-gray-300 dark:border-gray-700"
+    class="
+      flex
+      items-center
+      justify-between
+      w-full
+      h-20
+      px-4
+      border-t border-gray-300
+      dark:border-gray-700
+    "
   >
     <p class="text-sm">
       Made with <span class="blinking-heart">❤️</span> by
@@ -8,7 +17,14 @@
       {{ state.date }}
     </p>
     <div
-      class="flex items-center justify-center space-x-2 md:space-x-3 lg:space-x-4"
+      class="
+        flex
+        items-center
+        justify-center
+        space-x-2
+        md:space-x-3
+        lg:space-x-4
+      "
     >
       <span class="text-xs opacity-50">(v{{ state.appVersion }})</span>
       <a
@@ -90,11 +106,12 @@
 
 <script lang="ts">
   import { defineComponent, reactive } from '@vue/composition-api';
+  import { getRuntimeVM } from '~/utils/runtime';
 
   export default defineComponent({
     name: 'Footer',
-    setup(_, { root }) {
-      const { $config } = root;
+    setup() {
+      const { $config } = getRuntimeVM();
       const state = reactive({
         date: new Date().getFullYear(),
         appVersion: $config.appVersion,

@@ -1,6 +1,15 @@
 <template>
   <div
-    class="flex items-center justify-between w-full h-20 px-4 border-b border-gray-300 dark:border-gray-700"
+    class="
+      flex
+      items-center
+      justify-between
+      w-full
+      h-20
+      px-4
+      border-b border-gray-300
+      dark:border-gray-700
+    "
   >
     <div title="Nuxt, Hasura & Mapbox">
       <svg
@@ -43,7 +52,16 @@
     </div>
     <select
       v-model="$colorMode.preference"
-      class="w-32 px-4 text-base text-gray-800 bg-gray-200 border border-gray-700 rounded dark:text-gray-300 dark:bg-gray-900 form-select"
+      class="
+        w-32
+        px-4
+        text-base text-gray-800
+        bg-gray-200
+        border border-gray-700
+        rounded
+        dark:text-gray-300 dark:bg-gray-900
+        form-select
+      "
     >
       <option value="system">System</option>
       <option value="light">Light</option>

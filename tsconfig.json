@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
     "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
+      "esnext",
+      "esnext.asynciterable",
+      "dom"
     ],
     "esModuleInterop": true,
     "allowJs": true,
@@ -16,23 +16,42 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
     "types": [
       "@types/node",
-      "@nuxt/types",
       "@types/mapbox-gl",
+      "@types/mapbox__mapbox-gl-draw",
+      "@nuxtjs/axios",
+      "@nuxtjs/apollo",
+      "@nuxt/types",
+      "vue-apollo",
+      "graphql-tag"
     ]
   },
-  "include": ["@types/**/*"],
+  "include": [
+    // JavaScript
+    "components/**/*.js",
+    "plugins/**/*.js",
+    "nuxt.config.js",
+    // Vue
+    "components/**/*.vue",
+    "pages/**/*.vue",
+    "layouts/**/*.vue",
+    // TypeScript
+    "@types/modules/**/*.d.ts",
+    "components/**/*.ts",
+    "config/**/*.ts",
+    "gql/**/*.ts",
+    "plugins/**/*.ts",
+    "nuxt.config.ts",
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",
-    "dist"
+    "dist",
+    "static",
+    "test"
   ]
 }

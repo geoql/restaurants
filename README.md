@@ -1,5 +1,6 @@
 # 🇮🇳 Restaurants :: GeoQL 
 
+[![ci](https://github.com/geoql/restaurants/actions/workflows/ci.yml/badge.svg)](https://github.com/geoql/restaurants/actions/workflows/ci.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1466d682-7a44-480e-990f-1af959f28ba5/deploy-status)](https://app.netlify.com/sites/nuxt-hasura-mapbox/deploys)
 
 ## About
@@ -8,11 +9,11 @@ Draw an Area of your interest & find the restaurants nearby
 ## Stacktrace 
 Development stack:
 - [Nuxt](https://typescript.nuxtjs.org/)
-- [TailwindCSS](https://v1.tailwindcss.com/)
+- [TailwindCSS v2.x](https://tailwindcss.com/docs)
 - [v-mapbox](https://github.com/geospoc/v-mapbox)
 
 CI/CD stack:
-- [GitHub actions](./.github/workflows/ci.yml)
+- [GitHub Actions](./.github/workflows/ci.yml)
 
 Release stack:
 - [Ship.js](https://github.com/algolia/shipjs)

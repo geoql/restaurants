@@ -15,27 +15,36 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
+        node: [16]
 
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.3
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2
+      - name: Upgrade npm ✨
+        run: npm i -g npm@latest
+
+      - name: Get npm cache directory 🏗
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Restore cached node_modules 🤷‍♂️
+        uses: actions/cache@v2.1.6
         with:
-          path: ~/.npm
+          path: ${{ steps.npm-cache.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: npm ci
+      - name: Install dependencies 🚀
+        run: npm ci --prefer-offline --no-audit --no-optional
 
-      - name: Run linter 👀
+      - name: Check for lint errors 👀
         run: npm run lint
