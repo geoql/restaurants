@@ -1,15 +1,21 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  // purge: ['./dist/**/*.css'],
-  experimental: {
-    darkModeVariant: true,
+  mode: 'jit',
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+      'nuxt.config.js',
+      // TypeScript
+      'plugins/**/*.ts',
+      'nuxt.config.ts',
+    ],
   },
-  dark: 'class',
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -18,7 +24,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/custom-forms'),
+    require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };

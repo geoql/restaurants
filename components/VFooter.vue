@@ -106,11 +106,12 @@
 
 <script lang="ts">
   import { defineComponent, reactive } from '@vue/composition-api';
+  import { getRuntimeVM } from '~/utils/runtime';
 
   export default defineComponent({
     name: 'Footer',
-    setup(_, { root }) {
-      const { $config } = root;
+    setup() {
+      const { $config } = getRuntimeVM();
       const state = reactive({
         date: new Date().getFullYear(),
         appVersion: $config.appVersion,

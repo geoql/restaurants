@@ -20,6 +20,7 @@
       <slot />
       <div class="absolute top-0 right-0 m-2">
         <div
+          v-click-outside="() => (state.basemaps.shown = false)"
           class="
             relative
             flex
@@ -33,7 +34,7 @@
           title="Basemaps"
           :class="{
             'dark:bg-gray-800 bg-gray-200': state.basemaps.shown,
-            'hover:dark:bg-gray-800 hover:bg-gray-200': !state.basemaps.shown,
+            'hover:bg-gray-200 hover:dark:bg-gray-800 ': !state.basemaps.shown,
           }"
         >
           <div
@@ -117,6 +118,7 @@
   import MapboxDraw from '@mapbox/mapbox-gl-draw';
   import centroid from '@turf/centroid';
   import { Feature, Polygon } from 'geojson';
+  import { getRuntimeVM } from '~/utils/runtime';
 
   export default defineComponent({
     components: {
@@ -137,14 +139,15 @@
         required: true,
       },
     },
-    setup(props, { emit, root }) {
-      const { $config } = root;
+    setup(props, { emit }) {
+      const { $config } = getRuntimeVM();
       const state = reactive({
         mapOptions: {
           accessToken: $config.mapToken,
           style: 'mapbox://styles/mapbox/dark-v10?optimize=true',
           center: [77.607, 12.996],
           zoom: 12,
+          maxZoom: 22,
         },
         mapboxgl,
         basemaps: {

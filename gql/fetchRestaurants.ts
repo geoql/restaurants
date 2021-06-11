@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from 'graphql-tag';
 
 export const fetchRestaurants = gql`
   query fetchNearbyRestaurants($bound: Int!, $lat: float8!, $long: float8!) {
