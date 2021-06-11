@@ -11,10 +11,20 @@
       class="select-none"
     >
       <div
-        class="flex items-center justify-between p-2 rounded shadow cursor-pointer hover:shadow-md"
+        class="
+          flex
+          items-center
+          justify-between
+          p-2
+          rounded
+          shadow
+          cursor-pointer
+          hover:shadow-md
+        "
         :class="{
           'text-white bg-purple-800': basemap.enabled,
-          'text-gray-800 bg-gray-400 dark:text-white dark:bg-gray-600': !basemap.enabled,
+          'text-gray-800 bg-gray-400 dark:text-white dark:bg-gray-600':
+            !basemap.enabled,
         }"
         @click="updateBasemap(basemap)"
       >
