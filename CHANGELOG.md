@@ -1,3 +1,20 @@
+# [1.6.0](https://github.com/geoql/restaurants/compare/v1.5.0...v1.6.0) (2021-06-11)
+
+
+### Bug Fixes
+
+* add `\n` to settings ([c2fcc55](https://github.com/geoql/restaurants/commit/c2fcc55d419f6cb962ac90ea67d576bb33b72776))
+* issue caused by eslint config prettier ([48691e0](https://github.com/geoql/restaurants/commit/48691e070f139de8957355bb3ffd7f9b00cb918b))
+* update appVersion to use from `$config` ([82b1dd8](https://github.com/geoql/restaurants/commit/82b1dd8015d8d39634a17d955f87032ac3c368ce))
+
+
+### Features
+
+* **deps:** upgrade lockfile to v2 ([3dbf186](https://github.com/geoql/restaurants/commit/3dbf186502200b3e333c77fc99e628c027dc4643))
+* **husky:** bump husky to v6 ([fd11612](https://github.com/geoql/restaurants/commit/fd116128ad07c4f18972e34b3668d9a448074992))
+
+
+
 # 1.5.0 (2020-12-16)
 
 
