@@ -1,5 +1,5 @@
 {
-  "name": "hasura-gql-mapbox",
+  "name": "@geoql/gql-restaurants",
   "description": "Hasura GraphQL + Nuxt & Mapbox",
   "version": "1.5.0",
   "private": true,
