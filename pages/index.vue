@@ -3,17 +3,7 @@
     <!-- Loading indicator -->
     <div
       v-if="state.loading"
-      class="
-        fixed
-        z-40
-        flex
-        items-center
-        justify-center
-        w-full
-        h-full
-        pb-20
-        opacity-75
-      "
+      class="fixed z-40 flex items-center justify-center w-full h-full pb-20 opacity-75"
     >
       <svg
         class="w-5 h-5 text-white animate-spin"
@@ -48,15 +38,7 @@
         <div class="relative">
           <button
             type="button"
-            class="
-              p-2
-              m-2
-              rounded
-              shadow
-              outline-none
-              focus:outline-none
-              hover:shadow-sm
-            "
+            class="p-2 m-2 rounded shadow outline-none focus:outline-none hover:shadow-sm"
             :class="{
               'bg-purple-700 text-white': state.map.drawAreaOfInterest,
               'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white':
@@ -137,11 +119,10 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, reactive } from '@nuxtjs/composition-api';
+  import { computed, defineComponent, reactive } from 'vue';
   import { MglMarker, MglPopup, MglGeojsonLayer } from 'v-mapbox';
   import { FeatureCollection } from 'geojson';
   import { fetchRestaurants } from '@/gql/fetchRestaurants';
-  import { getRuntimeVM } from '@/utils/runtime';
   import CommonMap from '@/components/CommonMap.vue';
 
   const latitude = 0;
@@ -214,18 +195,9 @@
           };
         }),
       });
-
-      /**
-       * If map is loaded
-       * @returns void
-       */
       function mapLoaded(loaded: boolean): void {
         state.map.loaded = loaded;
       }
-      /**
-       * Fetch restaurants from gql server
-       * @returns Promise
-       */
       async function refetchRestaurants({
         event,
         center,

@@ -1,8 +1,6 @@
 {
-  "css.lint.unknownAtRules": "ignore",
-  "css.validate": true,
-  "scss.validate": true,
-  "stylelint.enable": true,
-  "volar.tsPlugin": true,
-  "volar.autoCompleteRefs": true
+  "files.eol": "\n",
+  "css.validate": false,
+  "scss.validate": false,
+  "editor.formatOnSave": true
 }

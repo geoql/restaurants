@@ -7,19 +7,27 @@ module.exports = {
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
     sourceType: 'module',
+    lib: ['es2022'],
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true,
+    },
+    extraFileExtensions: ['.vue'],
   },
+  plugins: ['prettier', 'vue', 'jsdoc', 'security', '@typescript-eslint'],
   extends: [
-    '@nuxtjs',
-    '@nuxtjs/eslint-config-typescript',
     'prettier',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
+    'plugin:jsdoc/recommended',
+    'plugin:security/recommended',
   ],
-  plugins: ['prettier', 'vue'],
   // add your custom rules here
   rules: {
-    'vue/no-v-html': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
 };

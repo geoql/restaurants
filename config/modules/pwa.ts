@@ -1,4 +1,4 @@
-const pwaConfig = {
+export const pwa = {
   // https://pwa.nuxtjs.org/icon
   icon: {
     source: 'static/icons/icon.png',
@@ -22,5 +22,3 @@ const pwaConfig = {
     lang: 'en',
   },
 };
-
-export { pwaConfig as pwa };

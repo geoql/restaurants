@@ -1,11 +1,9 @@
-import { NuxtApolloConfiguration } from '@nuxtjs/apollo/types/nuxt';
+import type { ModuleOptions } from '@nuxtjs/apollo';
 
-const apolloConfig: NuxtApolloConfiguration = {
-  clientConfigs: {
+export const apollo: ModuleOptions = {
+  clients: {
     default: {
       httpEndpoint: process.env.HASURA_ENDPOINT || '',
     },
   },
 };
-
-export { apolloConfig as apollo };

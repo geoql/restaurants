@@ -11,16 +11,7 @@
       class="select-none"
     >
       <div
-        class="
-          flex
-          items-center
-          justify-between
-          p-2
-          rounded
-          shadow
-          cursor-pointer
-          hover:shadow-md
-        "
+        class="flex items-center justify-between p-2 rounded shadow cursor-pointer hover:shadow-md"
         :class="{
           'text-white bg-purple-800': basemap.enabled,
           'text-gray-800 bg-gray-400 dark:text-white dark:bg-gray-600':
@@ -37,7 +28,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@nuxtjs/composition-api';
+  import { defineComponent } from 'vue';
 
   export default defineComponent({
     name: 'Basemaps',
@@ -49,6 +40,12 @@
       },
     },
     setup(_, { emit }) {
+      /**
+       *
+       * @param basemap
+       * @param basemap.enabled
+       * @param basemap.style
+       */
       function updateBasemap(basemap: {
         enabled: boolean;
         style: string;

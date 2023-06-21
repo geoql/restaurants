@@ -21,16 +21,7 @@
       <div class="absolute top-0 right-0 m-2">
         <div
           v-click-outside="() => (state.basemaps.shown = false)"
-          class="
-            relative
-            flex
-            items-center
-            justify-center
-            text-sm text-gray-800
-            bg-white
-            rounded-md
-            dark:bg-gray-700 dark:text-white
-          "
+          class="relative flex items-center justify-center text-sm text-gray-800 bg-white rounded-md dark:bg-gray-700 dark:text-white"
           title="Basemaps"
           :class="{
             'dark:bg-gray-800 bg-gray-200': state.basemaps.shown,
@@ -75,17 +66,7 @@
           >
             <div
               v-if="state.basemaps.shown"
-              class="
-                absolute
-                top-0
-                right-0
-                mr-16
-                origin-right
-                bg-gray-100
-                rounded-md
-                shadow-lg
-                dark:bg-gray-700
-              "
+              class="absolute top-0 right-0 mr-16 origin-right bg-gray-100 rounded-md shadow-lg dark:bg-gray-700"
             >
               <basemaps
                 :data="state.basemaps.data"
@@ -101,12 +82,7 @@
 </template>
 
 <script lang="ts">
-  import {
-    defineComponent,
-    reactive,
-    shallowReadonly,
-    watch,
-  } from '@nuxtjs/composition-api';
+  import { defineComponent, reactive, shallowReadonly, watch } from 'vue';
   import {
     MglMap,
     MglNavigationControl,
@@ -118,7 +94,6 @@
   import MapboxDraw from '@mapbox/mapbox-gl-draw';
   import centroid from '@turf/centroid';
   import { Feature, Polygon } from 'geojson';
-  import { getRuntimeVM } from '~/utils/runtime';
 
   export default defineComponent({
     components: {
@@ -189,6 +164,10 @@
         },
       );
 
+      /**
+       *
+       * @param e
+       */
       function mapLoaded(e: any): void {
         map = e.map;
         emit('map-load', true);
@@ -222,6 +201,10 @@
         });
       }
 
+      /**
+       *
+       * @param e
+       */
       function updateBasemap(e: string): void {
         state.basemaps.data.basemaps.forEach((basemap) => {
           if (basemap.style === e) {

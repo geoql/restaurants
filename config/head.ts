@@ -1,6 +1,6 @@
-import { NuxtOptionsHead } from '@nuxt/types/config/head';
+import type { NuxtAppConfig } from 'nuxt/schema';
 
-const head: NuxtOptionsHead = {
+const head: NuxtAppConfig['head'] = {
   title: 'Restaurants :: GeoQL',
   meta: [
     { charset: 'utf-8' },
@@ -71,7 +71,11 @@ const head: NuxtOptionsHead = {
       href: '/icons/apple-touch-icon.png',
     },
   ],
-  noscript: [{ innerHTML: 'This application requires JavaScript.' }],
+  noscript: [
+    {
+      innerHTML: 'This application requires JavaScript.',
+    },
+  ],
 };
 
-export default head;
+export { head };
