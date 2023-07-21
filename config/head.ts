@@ -11,7 +11,7 @@ const head: NuxtAppConfig['head'] = {
       content: 'Fetch restaurants via map–based interface',
     },
     { name: 'msapplication-TileColor', content: '#303030' },
-    { name: 'msapplication-TileImage', content: '/icons/mstile-150x150.png' },
+    { name: 'msapplication-TileImage', content: '/mstile-150x150.png' },
     { name: 'theme-color', content: '#303030' },
     { hid: 'og:site_name', property: 'og:site_name', content: 'GeoQL' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -46,29 +46,29 @@ const head: NuxtAppConfig['head'] = {
     {
       rel: 'icon',
       type: 'image/x-icon',
-      href: '/icons/favicon.ico',
+      href: '/favicon.ico',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: '/icons/favicon-32x32.png',
+      href: '/favicon-32x32.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: '/icons/favicon-16x16.png',
+      href: '/favicon-16x16.png',
     },
     {
       rel: 'mask-icon',
-      href: '/icons/safari-pinned-tab.svg',
+      href: '/safari-pinned-tab.svg',
       color: '#5bbad5',
     },
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      href: '/icons/apple-touch-icon.png',
+      href: '/apple-touch-icon.png',
     },
   ],
   noscript: [
