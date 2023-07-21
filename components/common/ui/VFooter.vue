@@ -3,7 +3,7 @@
     class="h-10 w-full flex items-center justify-between border-t border-stone-300 px-4 dark:border-stone-700"
   >
     <div class="flex items-center">
-      <p class="text-base">
+      <p class="text-sm">
         Made with <span class="animate-pulse text-red-5">❤️</span> by
         <a href="https://vinayakkulkarni.dev">Vinayak</a> &copy;
         {{ new Date().getFullYear() }}
