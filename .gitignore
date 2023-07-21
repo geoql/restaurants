@@ -94,5 +94,6 @@ test/e2e/videos/*.mp4
 
 # Nuxt 3
 nuxt.d.ts
+.nitro
 .output
 .netlify

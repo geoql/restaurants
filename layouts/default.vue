@@ -1,23 +1,25 @@
 <template>
   <div
-    class="w-screen h-screen text-gray-900 transition-colors duration-150 bg-gray-100 dark:text-gray-100 dark:bg-gray-900"
+    class="h-screen min-w-screen w-screen flex flex-col select-none overflow-hidden bg-stone-100 font-light text-stone-800 transition-colors duration-200 ease-linear dark:bg-stone-900 dark:text-stone-100"
   >
-    <v-header />
-    <nuxt class="-mt-20 -mb-20" />
-    <v-footer />
+    <!-- Header -->
+    <header>
+      <v-header />
+    </header>
+    <!-- Body -->
+    <main class="flex-1 overflow-y-auto">
+      <div class="h-full flex items-center justify-center">
+        <slot />
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <v-footer />
+    </footer>
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import VHeader from '@/components/VHeader.vue';
-  import VFooter from '@/components/VFooter.vue';
-
-  export default defineComponent({
-    name: 'DefaultLayout',
-    components: {
-      VHeader,
-      VFooter,
-    },
-  });
+<script setup lang="ts">
+  import VHeader from '~/components/common/ui/VHeader.vue';
+  import VFooter from '~/components/common/ui/VFooter.vue';
 </script>

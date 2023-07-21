@@ -6,14 +6,15 @@ const app: NuxtConfig['app'] = {
 };
 
 const css: NuxtConfig['css'] = [
-  'mapbox-gl/dist/mapbox-gl.css',
+  'maplibre-gl/dist/maplibre-gl.css',
   'v-mapbox/dist/v-mapbox.css',
   '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css',
   '~/assets/css/global.css',
 ];
 
 const plugins: NuxtConfig['plugins'] = [
-  { src: '~/plugins/click-outside', mode: 'client' },
+  { src: '~/plugins/v-click-outside', mode: 'client' },
+  { src: '~/plugins/v-mapbox', mode: 'client' },
 ];
 
 const typescript: NuxtConfig['typescript'] = {

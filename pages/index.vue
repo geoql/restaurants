@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full h-full pt-20 pb-20">
+  <div class="w-full h-full">
     <!-- Loading indicator -->
     <div
-      v-if="state.loading"
-      class="fixed z-40 flex items-center justify-center w-full h-full pb-20 opacity-75"
+      v-if="!mapState.ui.loaded"
+      class="z-10 h-full flex items-center justify-center opacity-75"
     >
       <svg
         class="w-5 h-5 text-white animate-spin"
@@ -26,14 +26,13 @@
         />
       </svg>
     </div>
-    <common-map
+    <!-- <common-map
       :class="{ 'opacity-75': state.loading }"
       :draw="state.map.drawAreaOfInterest"
       @map-load="mapLoaded"
       @style-changed="(e) => (state.map.styleChanged = e)"
       @draw-create="refetchRestaurants"
     >
-      <!-- Area of Interest -->
       <div class="absolute top-0 left-0 flex items-center">
         <div class="relative">
           <button
@@ -41,7 +40,7 @@
             class="p-2 m-2 rounded shadow outline-none focus:outline-none hover:shadow-sm"
             :class="{
               'bg-purple-700 text-white': state.map.drawAreaOfInterest,
-              'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white':
+              'bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-white':
                 !state.map.drawAreaOfInterest,
             }"
             @click="state.map.drawAreaOfInterest = true"
@@ -50,7 +49,6 @@
           </button>
         </div>
       </div>
-      <!-- Drawn GeoJSON -->
       <mgl-geojson-layer
         v-if="state.map.loaded && state.map.styleChanged"
         source-id="drawn-geojson-source"
@@ -60,7 +58,6 @@
         :clear-source="true"
         :replace="true"
       />
-      <!-- Restaurants -->
       <div
         v-if="
           state.map.loaded &&
@@ -114,116 +111,83 @@
           </mgl-popup>
         </mgl-marker>
       </div>
-    </common-map>
+    </common-map> -->
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, reactive } from 'vue';
-  import { MglMarker, MglPopup, MglGeojsonLayer } from 'v-mapbox';
-  import { FeatureCollection } from 'geojson';
-  import { fetchRestaurants } from '@/gql/fetchRestaurants';
-  import CommonMap from '@/components/CommonMap.vue';
+<script setup lang="ts">
+  import { gql } from 'graphql-tag';
+  import CommonMap from '@/components/map/CommonMap.vue';
 
-  const latitude = 0;
-  const longitude = 0;
+  const mapState = useMap();
 
-  export default defineComponent({
-    name: 'IndexPage',
-    apollo: {
-      restaurants: {
-        query: fetchRestaurants,
-        variables: {
-          bound: 1000,
-          lat: latitude,
-          long: longitude,
-        },
-        update(data: any) {
-          return data.get_nearby_restaurants;
-        },
-      },
-    },
-    components: {
-      CommonMap,
-      MglMarker,
-      MglPopup,
-      MglGeojsonLayer,
-    },
-    setup() {
-      const { $apollo } = getRuntimeVM();
-      const state = reactive({
-        map: {
-          loaded: false as boolean,
-          styleChanged: false as boolean,
-          drawAreaOfInterest: false as boolean,
-          drawnGeoJSON: {
-            type: 'FeatureCollection',
-            features: [],
-          } as FeatureCollection,
-        },
-        loading: false,
-      });
-      const drawnGeoJSON = reactive({
-        source: computed(() => {
-          if (!state.map.drawAreaOfInterest) {
-            return {
-              type: 'geojson',
-              data: state.map.drawnGeoJSON,
-            };
-          }
-          return {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [],
-            },
-          };
-        }),
-        layer: computed(() => {
-          return {
-            id: 'drawn-geojson-layer',
-            type: 'fill',
-            source: 'drawn-geojson-source',
-            paint: {
-              'fill-color': '#fff',
-              'fill-opacity': 0.55,
-              'fill-outline-color': '#f5f5f5',
-            },
-            layout: {
-              visibility: state.map.drawAreaOfInterest ? 'none' : 'visible',
-            },
-          };
-        }),
-      });
-      function mapLoaded(loaded: boolean): void {
-        state.map.loaded = loaded;
-      }
-      async function refetchRestaurants({
-        event,
-        center,
-      }: {
-        event: any;
-        center: { latitude: number; longitude: number };
-      }): Promise<void> {
-        if (!state.loading) {
-          state.loading = true;
-          state.map.drawAreaOfInterest = false;
-          state.map.drawnGeoJSON.features = event.features;
-          await $apollo.queries.restaurants.setVariables({
-            bound: 1000,
-            lat: center.latitude,
-            long: center.longitude,
-          });
-          await $apollo.queries.restaurants.refetch();
-          state.loading = false;
-        }
+  const drawnGeoJSON = reactive({
+    source: computed(() => {
+      if (!state.map.drawAreaOfInterest) {
+        return {
+          type: 'geojson',
+          data: state.map.drawnGeoJSON,
+        };
       }
       return {
-        state,
-        drawnGeoJSON,
-        mapLoaded,
-        refetchRestaurants,
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [],
+        },
       };
-    },
+    }),
+    layer: computed(() => {
+      return {
+        id: 'drawn-geojson-layer',
+        type: 'fill',
+        source: 'drawn-geojson-source',
+        paint: {
+          'fill-color': '#fff',
+          'fill-opacity': 0.55,
+          'fill-outline-color': '#f5f5f5',
+        },
+        layout: {
+          visibility: state.map.drawAreaOfInterest ? 'none' : 'visible',
+        },
+      };
+    }),
   });
+
+  const refetchRestaurants = async ({
+    event,
+    center,
+  }: {
+    event: any;
+    center: { latitude: number; longitude: number };
+  }) => {
+    if (!state.loading) {
+      state.loading = true;
+      state.map.drawAreaOfInterest = false;
+      state.map.drawnGeoJSON.features = event.features;
+      const query = gql`
+        query fetchNearbyRestaurants(
+          $bound: Int!
+          $lat: float8!
+          $long: float8!
+        ) {
+          get_nearby_restaurants(
+            args: { bound: $bound, lat: $lat, long: $long }
+          ) {
+            name
+            lat
+            long
+          }
+        }
+      `;
+      const variables = {
+        bound: 1000,
+        lat: center.latitude,
+        long: center.longitude,
+      };
+      const { data } = await useAsyncQuery(query, variables);
+      console.log('data: ', data);
+      state.loading = false;
+    }
+  };
 </script>
