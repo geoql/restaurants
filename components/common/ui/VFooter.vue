@@ -6,17 +6,33 @@
       <p class="text-sm">
         Made with <span class="animate-pulse text-red-5">❤️</span> by
         <a href="https://vinayakkulkarni.dev">Vinayak</a> &copy;
-        {{ new Date().getFullYear() }}
+        {{ state.date }}
       </p>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center space-x-4">
+      <div class="flex flex-col items-start justify-between w-20">
+        <div
+          v-if="state.appVersion"
+          class="flex justify-between w-full text-xs"
+        >
+          <div>app:</div>
+          v{{ state.appVersion }}
+        </div>
+        <div
+          v-if="state.buildVersion"
+          class="flex justify-between w-full text-xs"
+        >
+          <div>build:</div>
+          {{ state.buildVersion }}
+        </div>
+      </div>
       <!-- GitHub -->
       <a
         rel="noopener"
         href="https://github.com/vinayakkulkarni"
         target="_blank"
         aria-label="Github"
-        class="px-2 transition-colors duration-100 ease-linear hover:text-dark-300"
+        class="transition-colors duration-100 ease-linear hover:text-dark-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +55,7 @@
         href="https://twitter.com/_vinayak_k"
         target="_blank"
         aria-label="Twitter"
-        class="px-2 transition-colors duration-100 ease-linear hover:text-blue-300"
+        class="transition-colors duration-100 ease-linear hover:text-blue-300"
       >
         <svg
           aria-hidden="true"
@@ -61,7 +77,7 @@
         href="https://www.linkedin.com/in/kulkarnivinayak/"
         target="_blank"
         aria-label="LinkedIn"
-        class="px-2 transition-colors duration-100 ease-linear hover:text-blue-400"
+        class="transition-colors duration-100 ease-linear hover:text-blue-400"
       >
         <svg
           aria-hidden="true"
@@ -83,7 +99,7 @@
         href="https://codepen.io/vinayakkulkarni"
         target="_blank"
         aria-label="Codepen"
-        class="px-2 transition-colors duration-100 ease-linear hover:text-dark-400"
+        class="transition-colors duration-100 ease-linear hover:text-dark-400"
       >
         <svg
           aria-hidden="true"
@@ -104,23 +120,10 @@
 </template>
 
 <script setup lang="ts">
-  const router = useRouter();
-  const isDark = useDark();
-  const toggleDark = useToggle(isDark);
-</script>
-
-<!-- <script lang="ts">
-  export default defineComponent({
-    name: 'Footer',
-    setup() {
-      const { $config } = useNuxtApp();
-      const state = reactive({
-        date: new Date().getFullYear(),
-        appVersion: $config.public.appVersion,
-      });
-      return {
-        state,
-      };
-    },
+  const { $config } = useNuxtApp();
+  const state = reactive({
+    date: new Date().getFullYear(),
+    appVersion: $config.public.appVersion.split('+')[0],
+    buildVersion: $config.public.appVersion.split('+')[1],
   });
-</script> -->
+</script>

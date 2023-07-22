@@ -35,6 +35,7 @@
     "maplibre-gl": "^2.4.0",
     "papaparse": "^5.4.1",
     "pinia": "^2.1.4",
+    "simple-git": "^3.19.1",
     "uuid": "^9.0.0",
     "v-mapbox": "^4.0.2"
   },
