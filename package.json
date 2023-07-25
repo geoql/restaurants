@@ -22,7 +22,10 @@
     "release": "shipjs prepare",
     "release:dry": "shipjs prepare --dry-run",
     "release:auto": "shipjs prepare --yes",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "hasura": "hasura --project hasura --skip-update-check",
+    "hasura:console": "npm run hasura console",
+    "hasura:apply": "npm run hasura migrate apply"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.4.2",

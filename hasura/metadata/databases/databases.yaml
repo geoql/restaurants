@@ -1,0 +1,8 @@
+- name: restaurants
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://docker:mysecretpassword@db/restaurants
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include restaurants/tables/tables.yaml"
