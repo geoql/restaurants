@@ -15,7 +15,7 @@
         :class="{
           'text-white bg-gradient-to-l from-purple-600 to-purple-800':
             basemap.enabled,
-          'text-stone-800 bg-stone-400 dark:text-white dark:bg-stone-600 dark:hover:bg-stone-500 hover:bg-stone-100':
+          'text-gray-800 bg-gray-400 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500 hover:bg-gray-100':
             !basemap.enabled,
           'border-black': basemap.source === 'carto',
           'border-blue-500': basemap.source === 'mapbox',
@@ -37,33 +37,19 @@
   </div>
 </template>
 
-<script lang="ts">
-  export default defineComponent({
-    name: 'Basemaps',
-    props: {
-      data: {
-        type: Object,
-        required: true,
-      },
-    },
-    setup(_, { emit }) {
-      /**
-       * Updates the basemap
-       * @param {Record<string, string>} basemap - The basemap to update
-       * @param {boolean} basemap.enabled - Whether the basemap is enabled
-       * @param {string} basemap.style - The basemap style
-       */
-      function updateBasemap(basemap: {
-        enabled: boolean;
-        style: string;
-      }): void {
-        if (!basemap.enabled) {
-          emit('update-map-style', basemap.style);
-        }
-      }
-      return {
-        updateBasemap,
-      };
-    },
-  });
+<script setup lang="ts">
+  import { Basemap, Basemaps } from 'types/map';
+
+  defineProps<{
+    data: Basemaps;
+  }>();
+  const emit = defineEmits<{
+    update: [style: Basemap['style']];
+  }>();
+
+  const updateBasemap = (basemap: Basemap): void => {
+    if (!basemap.enabled) {
+      emit('update', basemap.style);
+    }
+  };
 </script>

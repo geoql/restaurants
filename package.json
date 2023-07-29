@@ -1,7 +1,7 @@
 {
-  "name": "@geoql/gql-restaurants",
+  "name": "@geoql/restaurants",
   "version": "1.6.0",
-  "description": "Hasura GraphQL + Nuxt & Mapbox",
+  "description": "Hasura & Nuxt based app to find restaurants near you",
   "private": true,
   "type": "module",
   "scripts": {
@@ -28,19 +28,13 @@
     "hasura:apply": "npm run hasura migrate apply"
   },
   "dependencies": {
-    "@mapbox/mapbox-gl-draw": "^1.4.2",
     "@pinia/nuxt": "^0.4.11",
-    "@turf/center": "^6.5.0",
-    "@turf/centroid": "^6.5.0",
+    "@turf/area": "^6.5.0",
     "click-outside-vue3": "^4.0.1",
-    "comlink": "^4.4.1",
     "idb": "^7.1.1",
-    "maplibre-gl": "^2.4.0",
-    "papaparse": "^5.4.1",
-    "pinia": "^2.1.4",
-    "simple-git": "^3.19.1",
-    "uuid": "^9.0.0",
-    "v-mapbox": "^4.0.2"
+    "maplibre-gl": "^3.2.1",
+    "pinia": "^2.1.6",
+    "terra-draw": "^0.0.1-alpha.44"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
@@ -48,20 +42,19 @@
     "@deck.gl/layers": "^8.9.22",
     "@deck.gl/mapbox": "^8.9.22",
     "@julr/unocss-preset-forms": "^0.0.5",
-    "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@nuxt/devtools": "^0.7.0",
+    "@nuxt/devtools": "^0.7.1",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/plausible": "^0.2.1",
     "@types/geojson": "^7946.0.10",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.4.5",
     "@types/papaparse": "^5.3.7",
     "@types/uuid": "^9.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
-    "@unocss/eslint-config": "^0.53.5",
-    "@unocss/nuxt": "^0.53.5",
-    "@unocss/preset-wind": "^0.53.5",
-    "@unocss/reset": "^0.53.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "@unocss/eslint-config": "^0.53.6",
+    "@unocss/nuxt": "^0.53.6",
+    "@unocss/preset-wind": "^0.53.6",
+    "@unocss/reset": "^0.53.6",
     "@vinayakkulkarni/prettier-config-vue": "^1.0.0",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
@@ -76,17 +69,13 @@
     "lint-staged": "^13.2.3",
     "nuxt": "^3.6.5",
     "prettier": "^3.0.0",
-    "sass": "^1.64.0",
+    "sass": "^1.64.1",
     "shipjs": "^0.26.3",
     "stylelint": "^15.10.2",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-prettier": "^4.0.0",
     "typescript": "^5.1.6",
     "unocss-preset-scrollbar": "^0.2.1"
-  },
-  "repository": {
-    "url": "git+https://github.com/geoql/restaurants.git",
-    "type": "git"
   },
   "author": {
     "name": "Vinayak Kulkarni",
@@ -97,8 +86,12 @@
     "node": ">=20.0.0",
     "npm": ">=9.0.0"
   },
+  "repository": {
+    "url": "git+https://github.com/geoql/restaurants.git",
+    "type": "git"
+  },
   "bugs": {
     "url": "https://github.com/geoql/restaurants/issues"
   },
-  "homepage": "https://vinayakkulkarni.dev/"
+  "homepage": "https://restaurants.geoql.in/"
 }

@@ -9,21 +9,21 @@ export const useMap = defineStore({
   id: 'map',
   state: () => ({
     ui: {
-      loaded: false as boolean,
-      styleChanged: false as boolean,
-      tilesLoaded: false as boolean,
+      loaded: false,
+      styleChanged: false,
+      tilesLoaded: false,
       errors: {
-        shown: false as boolean,
+        shown: false,
         data: [] as string[],
       },
     },
     map: {
       state: {
-        latitude: 0 as number,
-        longitude: 0 as number,
+        latitude: 0,
+        longitude: 0,
         bbox: [] as number[][],
         center: [] as number[],
-        zoom: 0 as number,
+        zoom: 0,
       },
       options: {
         container: 'map',
@@ -37,14 +37,14 @@ export const useMap = defineStore({
         attributionControl: false,
         trackResize: true,
         minPitch: 0,
-        maxPitch: 60,
+        maxPitch: 85,
       } as MapOptions,
       controls: {
         attribution: {
-          shown: true as boolean,
+          shown: true,
         },
         geolocate: {
-          shown: true as boolean,
+          shown: true,
           options: {
             positionOptions: {
               enableHighAccuracy: true,
@@ -53,30 +53,33 @@ export const useMap = defineStore({
           },
         },
         fullscreen: {
-          shown: true as boolean,
+          shown: true,
         },
         navigation: {
-          shown: true as boolean,
+          shown: true,
         },
         scale: {
-          shown: true as boolean,
+          shown: true,
         },
       },
     },
     utils: {
       basemaps: {
-        shown: false as boolean,
+        shown: false,
         data: {
           id: useUuid(),
           title: 'Basemaps',
           basemaps: [],
         } as Basemaps,
       },
+      aoi: {
+        shown: false,
+      },
       upload: {
-        shown: false as boolean,
+        shown: false,
       },
       compass: {
-        shown: false as boolean,
+        shown: false,
         data: {
           bearing: 0,
         },
@@ -123,13 +126,15 @@ export const useMap = defineStore({
     setBearing(bearing: number): void {
       this.utils.compass.data.bearing = bearing;
     },
+    setAoiWidgetShown(shown: boolean): void {
+      this.utils.aoi.shown = shown;
+    },
+    toggleAoiWidget(): void {
+      this.utils.aoi.shown = !this.utils.aoi.shown;
+      this.utils.basemaps.shown = false;
+    },
     toggleBasemapsWidget(): void {
       this.utils.basemaps.shown = !this.utils.basemaps.shown;
-      this.utils.upload.shown = false;
-    },
-    toggleUploadsWidget(): void {
-      this.utils.upload.shown = !this.utils.upload.shown;
-      this.utils.basemaps.shown = false;
     },
     toggleCompassWidget(): void {
       this.utils.compass.shown = !this.utils.compass.shown;
