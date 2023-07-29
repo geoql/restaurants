@@ -1,4 +1,6 @@
-export const plausible = {
+import type { NuxtConfig } from 'nuxt/schema';
+
+export const config: NuxtConfig['plausible'] = {
   hashMode: false,
   trackLocalhost: false,
   domain: 'restuarants.geoql.in',

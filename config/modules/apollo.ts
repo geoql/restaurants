@@ -1,6 +1,6 @@
-import type { ModuleOptions } from '@nuxtjs/apollo';
+import type { NuxtConfig } from 'nuxt/schema';
 
-export const apollo: ModuleOptions = {
+export const config: NuxtConfig['apollo'] = {
   clients: {
     default: {
       httpEndpoint:

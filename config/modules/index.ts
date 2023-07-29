@@ -1,7 +1,7 @@
 import type { NuxtConfig } from 'nuxt/schema';
-import { plausible } from './plausible';
-import { unocss } from './unocss';
-import { apollo } from './apollo';
+import { config as plausible } from './plausible';
+import { config as unocss } from './unocss';
+import { config as apollo } from './apollo';
 
 const modules: NuxtConfig['modules'] = [
   // https://pinia.esm.dev/ssr/nuxt.html#nuxt-js
