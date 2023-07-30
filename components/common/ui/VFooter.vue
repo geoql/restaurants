@@ -10,17 +10,17 @@
       </p>
     </div>
     <div class="flex items-center justify-center space-x-4">
-      <div class="flex flex-col items-start justify-between w-20">
+      <div class="w-20 flex flex-col items-start justify-between">
         <div
           v-if="state.appVersion"
-          class="flex justify-between w-full text-xs"
+          class="w-full flex justify-between text-xs"
         >
           <div>app:</div>
           v{{ state.appVersion }}
         </div>
         <div
           v-if="state.buildVersion"
-          class="flex justify-between w-full text-xs"
+          class="w-full flex justify-between text-xs"
         >
           <div>build:</div>
           {{ state.buildVersion }}
@@ -41,7 +41,7 @@
           viewBox="0 0 32 32"
           aria-labelledby="github"
           role="presentation"
-          class="fill-current text-xl w-5 h-5"
+          class="h-5 w-5 fill-current text-xl"
         >
           <title id="github" lang="en">github</title>
           <path
@@ -62,7 +62,7 @@
           width="24"
           height="24"
           viewBox="0 0 512 512"
-          class="fill-current text-xl w-5 h-5"
+          class="h-5 w-5 fill-current text-xl"
         >
           <g>
             <path
@@ -84,7 +84,7 @@
           width="24"
           height="24"
           viewBox="0 0 512 512"
-          class="fill-current text-xl w-5 h-5"
+          class="h-5 w-5 fill-current text-xl"
         >
           <g>
             <path
@@ -106,7 +106,7 @@
           width="24"
           height="24"
           viewBox="0 0 512 512"
-          class="fill-current text-xl w-5 h-5"
+          class="h-5 w-5 fill-current text-xl"
         >
           <g>
             <path
