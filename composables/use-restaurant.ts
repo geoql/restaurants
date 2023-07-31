@@ -1,11 +1,6 @@
 import { fetchNearbyRestaurantsQuery } from '@/graphql/queries';
 import { defineStore } from 'pinia';
-import type { Ref } from 'vue';
-import type {
-  IRestaurantRequest,
-  IRestaurantResponse,
-  IRestaurant,
-} from '~/types/restaurant';
+import type { IRestaurantRequest, IRestaurant } from '~/types/restaurant';
 
 export const useRestaurant = defineStore({
   id: 'restaurant',
@@ -30,11 +25,17 @@ export const useRestaurant = defineStore({
     },
     async getRestaurants(variables: IRestaurantRequest): Promise<void> {
       this.setLoaded(false);
-      const { data }: { data: Ref<IRestaurantResponse> } = await useAsyncQuery(
+      const { data, error } = await useAsyncQuery(
         fetchNearbyRestaurantsQuery,
         variables,
       );
-      this.setRestaurants(data.value.getrestaurants);
+      if (data.value) {
+        this.setRestaurants(data.value.getrestaurants);
+      }
+      if (error.value) {
+        this.ui.errors.data.push(error.value.message);
+        this.ui.errors.shown = true;
+      }
       this.setLoaded(true);
     },
     setRestaurants(restaurants: IRestaurant[]): void {
