@@ -3,11 +3,12 @@ import type { NuxtConfig } from 'nuxt/schema';
 export const config: NuxtConfig['apollo'] = {
   clients: {
     default: {
-      connectToDevTools: true,
-      authType: null,
+      connectToDevTools: process.env.NODE_ENV !== 'production',
+      websocketsOnly: true,
+      wsLinkOptions: { lazy: true },
+      wsEndpoint: process.env.HASURA_WS_ENDPOINT,
       httpEndpoint:
-        process.env.HASURA_ENDPOINT || 'http://localhost:8080/v1/graphql',
-      tokenStorage: 'localStorage',
+        process.env.HASURA_HTTP_ENDPOINT || 'http://localhost:8080/v1/graphql',
       httpLinkOptions: {
         credentials: 'include',
         headers: {
@@ -16,5 +17,4 @@ export const config: NuxtConfig['apollo'] = {
       },
     },
   },
-  clientAwareness: true,
 };

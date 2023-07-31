@@ -1,30 +1,10 @@
 version: '3.6'
 services:
-  db:
-    container_name: db
-    image: kartoza/postgis:latest
-    environment:
-      POSTGRES_DBNAME: '${DB_DATABASE}'
-      POSTGRES_USER: '${DB_USERNAME}'
-      POSTGRES_PASS: '${DB_PASSWORD}'
-      POSTGRES_MULTIPLE_EXTENSIONS: 'postgis,hstore,postgis_topology,postgis_raster,pgrouting'
-    volumes:
-      - postgis-data:/var/lib/postgresql/
-    ports:
-      - '${DB_PORT}:5432'
-    networks:
-      - bridge
-    restart: unless-stopped
-    # healthcheck:
-    #   test: ["CMD-SHELL", "PGPASSWORD=${DB_PASSWORD} pg_isready -h ${DB_HOST} -U ${DB_USERNAME} -d ${DB_DATABASE}"]
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 3
   graphql-engine:
     container_name: graphql-engine
     image: hasura/graphql-engine:latest
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: 'postgres://${DB_USERNAME}:${DB_PASSWORD}@db/${DB_DATABASE}'
+      HASURA_GRAPHQL_DATABASE_URL: 'postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}'
       HASURA_ENABLE_CONSOLE: '${HASURA_ENABLE_CONSOLE}'
       HASURA_DEV_MODE: '${HASURA_DEV_MODE}'
       HASURA_ENABLED_LOG_TYPES: 'startup, http-log, webhook-log, websocket-log, query-log'
@@ -38,8 +18,6 @@ services:
     restart: always
     depends_on:
       data-connector-agent:
-        condition: service_healthy
-      db:
         condition: service_healthy
   data-connector-agent:
     container_name: data-connector-agent
@@ -60,9 +38,6 @@ services:
       timeout: 10s
       retries: 5
       start_period: 5s
-    depends_on:
-      db:
-        condition: service_healthy
 volumes:
   postgis-data:
 networks:
