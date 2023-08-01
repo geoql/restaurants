@@ -24,6 +24,12 @@ const experimental: NuxtConfig['experimental'] = {
   typedPages: true,
 };
 
+const nitro: NuxtConfig['nitro'] = {
+  prerender: {
+    crawlLinks: true,
+  },
+};
+
 const plugins: NuxtConfig['plugins'] = [
   { src: '~/plugins/v-click-outside', mode: 'client' },
 ];
@@ -55,6 +61,20 @@ const typescript: NuxtConfig['typescript'] = {
   shim: false,
 };
 
+const vite: NuxtConfig['vite'] = {
+  optimizeDeps: {
+    include: ['terra-draw', 'maplibre-gl'],
+  },
+  build: {
+    rollupOptions: {
+      external: ['terra-draw', 'maplibre-gl'],
+    },
+    commonjsOptions: {
+      include: [/maplibre-gl/, /terra-draw/, /node_modules/],
+    },
+  },
+};
+
 export { modules } from './modules';
 export {
   app,
@@ -62,9 +82,11 @@ export {
   css,
   devtools,
   experimental,
+  nitro,
   plugins,
   routeRules,
   runtimeConfig,
   ssr,
   typescript,
+  vite,
 };

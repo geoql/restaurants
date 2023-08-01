@@ -1,28 +1,31 @@
-import type { NuxtConfig } from 'nuxt/schema';
 import {
   app,
   components,
   css,
   devtools,
   experimental,
+  nitro,
   modules,
   plugins,
   routeRules,
   runtimeConfig,
   ssr,
   typescript,
+  vite,
 } from './config';
 
-export default {
+export default defineNuxtConfig({
   app,
   components,
   css,
   devtools,
   experimental,
-  ssr,
+  nitro,
   modules,
   plugins,
   routeRules,
   runtimeConfig,
+  ssr,
   typescript,
-} satisfies NuxtConfig;
+  vite,
+});

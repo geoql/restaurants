@@ -198,8 +198,6 @@
     TerraDrawCircleMode,
     TerraDrawMapLibreGLAdapter,
   } from 'terra-draw';
-  import center from '@turf/center';
-  import length from '@turf/length';
   import area from '@turf/area';
   import CommonMap from '@/components/map/CommonMap.vue';
   import Basemaps from '@/components/map/_partials/Basemaps.vue';
