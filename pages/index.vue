@@ -286,6 +286,7 @@
   const setMapState = () => {
     const { lng, lat } = map.getCenter();
     store.setCenter([lng, lat]);
+    store.setBearing(map.getBearing());
     store.setZoom(map.getZoom());
     store.setBounds(map.getBounds().toArray());
     store.setCoordinates({ lat, lng });
