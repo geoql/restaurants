@@ -25,6 +25,7 @@ const experimental: NuxtConfig['experimental'] = {
 };
 
 const nitro: NuxtConfig['nitro'] = {
+  preset: 'netlify',
   prerender: {
     crawlLinks: true,
   },
@@ -36,7 +37,7 @@ const plugins: NuxtConfig['plugins'] = [
 
 const routeRules: NuxtConfig['routeRules'] = {
   // Homepage pre-rendered at build time
-  // '/': { prerender: true },
+  '/': { prerender: true },
 };
 
 const runtimeConfig: NuxtConfig['runtimeConfig'] = {
