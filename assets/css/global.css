@@ -1,6 +1,8 @@
+@import url('@unocss/reset/tailwind.css');
+
 html {
   font-family:
-    'Inter',
+    Inter,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -10,8 +12,7 @@ html {
     sans-serif;
   font-size: 12px;
   word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -19,7 +20,8 @@ html {
 
 body {
   margin: 0;
-  color: #333;
+  color: theme('colors.gray.900');
+  background-color: theme('colors.gray.100');
 }
 
 *,
@@ -29,40 +31,8 @@ body {
   margin: 0;
 }
 
-canvas {
-  outline: none !important;
-}
-
-/* For Login Page */
-.blinking-heart {
-  display: inline-block;
-  animation: 0.8s infinite beatHeart;
-  color: #eb5e28;
-}
-
-@keyframes beatHeart {
-  0% {
-    transform: scale(1);
-  }
-
-  25% {
-    transform: scale(1.1);
-  }
-
-  40% {
-    transform: scale(1);
-  }
-
-  60% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
 .restaurant-popup div {
-  @apply dark:text-gray-200 text-gray-800 bg-gray-200 dark:bg-gray-800;
+  @apply text-stone-800 bg-stone-200 dark:text-stone-200 dark:bg-stone-800;
 }
 
 .restaurant-popup .mapboxgl-popup-tip {

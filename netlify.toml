@@ -1,6 +1,10 @@
 [dev]
-   command = "npm run dev"
+command = "npm run dev"
 
 [build]
-   command = "npm run generate"
-   publish = "dist"
+command = "npm run generate"
+publish = "./dist"
+
+[build.environment]
+NODE_VERSION = "20"
+NPM_VERSION = "9"

@@ -1,60 +1,70 @@
-import {
-  NuxtOptionsLoading,
-  NuxtOptionsLoadingIndicator,
-} from '@nuxt/types/config/loading';
-import { NuxtOptionsPlugin } from '@nuxt/types/config/plugin';
-import { NuxtOptionsRuntimeConfig } from '@nuxt/types/config/runtime';
+import type { NuxtConfig } from 'nuxt/schema';
+import { head } from './head';
 
-const typescript = {
-  typeCheck: {
-    eslint: {
-      enabled: true,
-      files: [
-        '@types/**/*.{ts,js}',
-        'components/**/*.{ts,js,vue}',
-        'config/**/*.{ts,js}',
-        'gql/**/*.{ts,js}',
-        'layouts/**/*.{ts,js,vue}',
-        'pages/**/*.{ts,js,vue}',
-        'plugins/**/*.{ts,js}',
-        'store/**/*.{ts,js}',
-      ],
+const app: NuxtConfig['app'] = {
+  head,
+};
+
+const components: NuxtConfig['components'] = false;
+
+const css: NuxtConfig['css'] = [
+  'maplibre-gl/dist/maplibre-gl.css',
+  '~/assets/css/global.css',
+  '~/assets/css/fonts.css',
+];
+
+const devtools: NuxtConfig['devtools'] = { enabled: true };
+
+const experimental: NuxtConfig['experimental'] = {
+  emitRouteChunkError: 'automatic',
+  typescriptBundlerResolution: true,
+  viewTransition: true,
+  componentIslands: true,
+  payloadExtraction: true,
+  typedPages: true,
+};
+
+const plugins: NuxtConfig['plugins'] = [
+  { src: '~/plugins/v-click-outside', mode: 'client' },
+];
+
+const routeRules: NuxtConfig['routeRules'] = {
+  // Homepage pre-rendered at build time
+  // '/': { prerender: true },
+};
+
+const runtimeConfig: NuxtConfig['runtimeConfig'] = {
+  public: {
+    map: {
+      aws: {
+        region: 'ap-south-1',
+        key: process.env.AWS_MAP_TOKEN,
+      },
+      mapbox: {
+        key: process.env.MAPBOX_MAP_TOKEN,
+      },
     },
+    appVersion: process.env.npm_package_version,
   },
 };
 
-const publicRuntimeConfig: NuxtOptionsRuntimeConfig = {
-  mapToken: process.env.MAP_TOKEN || null,
-  appVersion: process.env.npm_package_version || '0.0.0',
+const ssr: NuxtConfig['ssr'] = false;
+
+const typescript: NuxtConfig['typescript'] = {
+  strict: true,
+  shim: false,
 };
 
-const css: string[] = [
-  'mapbox-gl/dist/mapbox-gl.css',
-  'v-mapbox/dist/v-mapbox.css',
-  '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css',
-  '~/assets/css/global.css',
-];
-
-const plugins: NuxtOptionsPlugin[] = [
-  { src: '~/plugins/click-outside', mode: 'client' },
-];
-
-const loading: NuxtOptionsLoading = { color: '#303030' };
-
-const loadingIndicator: NuxtOptionsLoadingIndicator = {
-  name: 'folding-cube',
-  color: '#303030',
-  color2: '#303030',
-  background: '#1a202c',
-};
-
-export { default as build } from './build';
-export { default as head } from './head';
+export { modules } from './modules';
 export {
+  app,
+  components,
   css,
-  loading,
-  loadingIndicator,
+  devtools,
+  experimental,
   plugins,
+  routeRules,
+  runtimeConfig,
+  ssr,
   typescript,
-  publicRuntimeConfig,
 };

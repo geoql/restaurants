@@ -1,13 +1,19 @@
-import { NuxtOptionsModule } from '@nuxt/types/config/module';
-import { apollo } from './apollo';
-import { axios } from './axios';
-import { pwa } from './pwa';
+import type { NuxtConfig } from 'nuxt/schema';
+import { config as plausible } from './plausible';
+import { config as unocss } from './unocss';
+import { config as apollo } from './apollo';
 
-export const modules: NuxtOptionsModule[] = [
-  // https://go.nuxtjs.dev/axios
-  ['@nuxtjs/axios', axios],
-  // https://go.nuxtjs.dev/pwa
-  ['@nuxtjs/pwa', pwa],
-  // Doc: https://github.com/nuxt-community/apollo-module
+const modules: NuxtConfig['modules'] = [
+  // https://pinia.esm.dev/ssr/nuxt.html#nuxt-js
+  '@pinia/nuxt',
+  // https://vueuse.org/guide/#nuxt
+  '@vueuse/nuxt',
+  // https://github.com/nuxt-modules/plausible#setup
+  ['@nuxtjs/plausible', plausible],
+  // https://unocss.dev/integrations/nuxt
+  ['@unocss/nuxt', unocss],
+  // https://apollo.nuxtjs.org/getting-started/quick-start
   ['@nuxtjs/apollo', apollo],
 ];
+
+export { modules };
