@@ -47,6 +47,10 @@ const head: NuxtAppConfig['head'] = {
       src: 'https://unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.js',
       defer: true,
     },
+    {
+      src: 'https://unpkg.com/terra-draw@0.0.1-alpha.44/dist/terra-draw.modern.js',
+      defer: true,
+    },
   ],
   link: [
     {
