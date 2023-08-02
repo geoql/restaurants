@@ -1,3 +1,22 @@
+# [1.7.0](https://github.com/geoql/restaurants/compare/v1.6.0...v1.7.0) (2023-08-02)
+
+
+### Bug Fixes
+
+* **deps:** bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 ([ceea7ac](https://github.com/geoql/restaurants/commit/ceea7ac328cdaec88a72fe98bfe2b29a116d068a))
+* disable websockets ([c7f24ff](https://github.com/geoql/restaurants/commit/c7f24ff2b5a113d80547b6d13da039d13fc7d803))
+* ignore unnecessary files ([e8cdacc](https://github.com/geoql/restaurants/commit/e8cdacc906b2b347d4dbabe0a0e1065c803d5a0a))
+* **nitro:** update netlify preset ([bd69cce](https://github.com/geoql/restaurants/commit/bd69cceaab39c8f63cfe06f7d25087e1fdd3e5a1))
+* set bearing while saving map state ([0a6f71c](https://github.com/geoql/restaurants/commit/0a6f71c533022719d4f9095d96cdab92da9e2ce7))
+* use maplibre-gl dev binary ([0761198](https://github.com/geoql/restaurants/commit/0761198807cff440f9cdd99568f471f8e2498d34))
+
+
+### Features
+
+* clean up docker compose ([3896b49](https://github.com/geoql/restaurants/commit/3896b4951667ab819bcf12c36dda8617e0279a81))
+
+
+
 # [1.6.0](https://github.com/geoql/restaurants/compare/v1.5.0...v1.6.0) (2021-06-11)
 
 
