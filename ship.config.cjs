@@ -37,12 +37,4 @@ module.exports = {
     writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   },
   publishCommand: ({ tag }) => `echo "Releasing ${tag} version of the app"`,
-  afterPublish: ({ exec }) => {
-    exec(`git config --global user.email "action@github.com"`);
-    exec(`git config --global user.name "GitHub Action"`);
-
-    exec('git checkout dev');
-    exec('git rebase main');
-    exec('git push origin dev');
-  },
 };
