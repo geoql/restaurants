@@ -4,7 +4,7 @@ export const config: NuxtConfig['apollo'] = {
   clients: {
     default: {
       connectToDevTools: process.env.NODE_ENV !== 'production',
-      websocketsOnly: false,
+      websocketsOnly: true,
       wsLinkOptions: { lazy: true },
       wsEndpoint: process.env.HASURA_WS_ENDPOINT,
       httpEndpoint:
