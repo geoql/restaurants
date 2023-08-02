@@ -42,6 +42,12 @@ const head: NuxtAppConfig['head'] = {
       content: '/images/social.png',
     },
   ],
+  script: [
+    {
+      src: 'https://unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.js',
+      defer: true,
+    },
+  ],
   link: [
     {
       rel: 'icon',
@@ -69,6 +75,10 @@ const head: NuxtAppConfig['head'] = {
       rel: 'apple-touch-icon',
       sizes: '180x180',
       href: '/apple-touch-icon.png',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.css',
     },
   ],
   noscript: [

@@ -8,7 +8,7 @@ const app: NuxtConfig['app'] = {
 const components: NuxtConfig['components'] = false;
 
 const css: NuxtConfig['css'] = [
-  // 'maplibre-gl/dist/maplibre-gl.css',
+  'maplibre-gl-css/maplibre-gl.css',
   '~/assets/css/global.css',
   '~/assets/css/fonts.css',
 ];
@@ -68,7 +68,8 @@ const typescript: NuxtConfig['typescript'] = {
 const vite: NuxtConfig['vite'] = {
   resolve: {
     alias: {
-      'maplibre-gl': 'node_modules/maplibre-gl/dist/maplibre-gl-dev.js',
+      'maplibre-gl': 'maplibre-gl/dist/maplibre-gl-dev.js',
+      'maplibre-gl-css': 'maplibre-gl/dist',
       'terra-draw':
         'https://unpkg.com/terra-draw@0.0.1-alpha.44/dist/terra-draw.modern.js',
     },
