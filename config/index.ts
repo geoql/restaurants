@@ -8,7 +8,7 @@ const app: NuxtConfig['app'] = {
 const components: NuxtConfig['components'] = false;
 
 const css: NuxtConfig['css'] = [
-  'maplibre-gl/dist/maplibre-gl.css',
+  // 'maplibre-gl/dist/maplibre-gl.css',
   '~/assets/css/global.css',
   '~/assets/css/fonts.css',
 ];
@@ -25,7 +25,10 @@ const experimental: NuxtConfig['experimental'] = {
 };
 
 const nitro: NuxtConfig['nitro'] = {
-  preset: 'netlify',
+  preset: process.env.NODE_ENV === 'production' ? 'netlify' : 'static',
+  future: {
+    nativeSWR: true,
+  },
   prerender: {
     crawlLinks: true,
   },
@@ -63,15 +66,11 @@ const typescript: NuxtConfig['typescript'] = {
 };
 
 const vite: NuxtConfig['vite'] = {
-  optimizeDeps: {
-    include: ['terra-draw', 'maplibre-gl'],
-  },
-  build: {
-    rollupOptions: {
-      external: ['terra-draw', 'maplibre-gl'],
-    },
-    commonjsOptions: {
-      include: [/maplibre-gl/, /terra-draw/, /node_modules/],
+  resolve: {
+    alias: {
+      'maplibre-gl': 'node_modules/maplibre-gl/dist/maplibre-gl-dev.js',
+      'terra-draw':
+        'https://unpkg.com/terra-draw@0.0.1-alpha.44/dist/terra-draw.modern.js',
     },
   },
 };
