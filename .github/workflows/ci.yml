@@ -47,4 +47,4 @@ jobs:
           stylelint_extensions: css,scss,sass,vue
 
       - name: Run build 🏁
-        run: npm run generate
+        run: npm run build
