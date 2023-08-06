@@ -40,8 +40,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
     "@commitlint/config-conventional": "^17.6.7",
-    "@deck.gl/layers": "^8.9.23",
-    "@deck.gl/mapbox": "^8.9.23",
     "@julr/unocss-preset-forms": "^0.0.5",
     "@nuxt/devtools": "^0.7.5",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
