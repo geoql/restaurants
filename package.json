@@ -35,7 +35,7 @@
     "maplibre-gl": "^3.2.2",
     "pinia": "^2.1.6",
     "simple-git": "^3.19.1",
-    "terra-draw": "^0.0.1-alpha.44"
+    "terra-draw": "^0.0.1-alpha.45"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
