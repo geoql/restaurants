@@ -38,7 +38,7 @@
     "terra-draw": "^0.0.1-alpha.45"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.7",
+    "@commitlint/cli": "^17.7.0",
     "@commitlint/config-conventional": "^17.7.0",
     "@julr/unocss-preset-forms": "^0.0.5",
     "@nuxt/devtools": "^0.7.6",
