@@ -52,7 +52,7 @@
     "@typescript-eslint/parser": "^6.5.0",
     "@unocss/eslint-config": "^0.55.4",
     "@unocss/nuxt": "^0.55.3",
-    "@unocss/preset-wind": "^0.55.3",
+    "@unocss/preset-wind": "^0.55.4",
     "@unocss/reset": "^0.55.3",
     "@vinayakkulkarni/prettier-config-vue": "^1.0.0",
     "@vueuse/core": "^10.4.1",
