@@ -1,4 +1,10 @@
-import type { MapOptions } from 'maplibre-gl';
+import type {
+  FillLayerSpecification,
+  GeoJSONSourceSpecification,
+  MapOptions,
+  SymbolLayerSpecification,
+} from 'maplibre-gl';
+import type { Feature } from 'geojson';
 import type { Basemaps } from '~/types/map';
 import { defineStore } from 'pinia';
 
@@ -43,21 +49,6 @@ export const useMap = defineStore({
         attribution: {
           shown: true,
         },
-        geolocate: {
-          shown: true,
-          options: {
-            positionOptions: {
-              enableHighAccuracy: true,
-            },
-            trackUserLocation: true,
-          },
-        },
-        fullscreen: {
-          shown: true,
-        },
-        navigation: {
-          shown: true,
-        },
         scale: {
           shown: true,
         },
@@ -75,13 +66,19 @@ export const useMap = defineStore({
       aoi: {
         shown: false,
       },
-      upload: {
-        shown: false,
-      },
       compass: {
         shown: false,
         data: {
           bearing: 0,
+        },
+      },
+      geolocate: {
+        shown: false,
+        loading: false,
+        data: {
+          center: [] as number[],
+          circle: null as null | Feature,
+          timestamp: 0,
         },
       },
     },
@@ -99,6 +96,55 @@ export const useMap = defineStore({
         (state.ui.loaded || state.ui.styleChanged || state.ui.tilesLoaded)
       );
     },
+    layers: (state) => [
+      {
+        id: 'geolocated-user-circle',
+        data: {
+          source: {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: state.utils.geolocate.data.center,
+                  },
+                },
+              ],
+            },
+          } as GeoJSONSourceSpecification,
+          layer: {
+            id: 'geolocated-user-circle',
+            type: 'symbol',
+            source: 'geolocated-user-circle',
+            layout: {
+              'icon-image': 'pulsing-dot',
+            },
+          } as SymbolLayerSpecification,
+        },
+      },
+      {
+        id: 'geolocated-user-buffer',
+        data: {
+          source: {
+            type: 'geojson',
+            data: state.utils.geolocate.data.circle,
+          } as GeoJSONSourceSpecification,
+          layer: {
+            id: 'geolocated-user-buffer',
+            type: 'fill',
+            source: 'geolocated-user-buffer',
+            layout: {},
+            paint: {
+              'fill-color': '#F88',
+              'fill-opacity': 0.25,
+            },
+          } as FillLayerSpecification,
+        },
+      },
+    ],
   },
   actions: {
     setLoaded(loaded: boolean) {
@@ -140,6 +186,16 @@ export const useMap = defineStore({
       this.utils.compass.shown = !this.utils.compass.shown;
       this.utils.compass.data.bearing = 0;
       this.utils.compass.shown = false;
+    },
+    setGeolocateWidgetLoading(loading: boolean): void {
+      this.utils.geolocate.loading = loading;
+    },
+    setGeolocateWidgetCircle(circle: Feature): void {
+      this.utils.geolocate.data.circle = circle;
+    },
+    setGeolocateWidgetCenter(center: number[], timestamp: number): void {
+      this.utils.geolocate.data.center = center;
+      this.utils.geolocate.data.timestamp = timestamp;
     },
     async getBasemaps(): Promise<void> {
       const db = await useIdb();

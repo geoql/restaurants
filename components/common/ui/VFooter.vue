@@ -4,7 +4,7 @@
   >
     <div class="flex items-center">
       <p class="text-sm">
-        Made with <span class="animate-pulse text-red-5">❤️</span> by
+        Made with <span class="text-red-5 animate-pulse">❤️</span> by
         <a href="https://vinayakkulkarni.dev">Vinayak</a> &copy;
         {{ state.date }}
       </p>
@@ -29,7 +29,7 @@
       <!-- GitHub -->
       <a
         rel="noopener"
-        href="https://github.com/vinayakkulkarni"
+        href="https://github.com/geoql/restaurants"
         target="_blank"
         aria-label="Github"
         class="transition-colors duration-100 ease-linear hover:text-dark-300"

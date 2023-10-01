@@ -30,12 +30,12 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@turf/area": "^6.5.0",
+    "@turf/circle": "^6.5.0",
     "click-outside-vue3": "^4.0.1",
     "idb": "^7.1.1",
     "maplibre-gl": "^3.3.1",
     "pinia": "^2.1.6",
-    "simple-git": "^3.20.0",
-    "terra-draw": "^0.0.1-alpha.48"
+    "simple-git": "^3.20.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
@@ -45,7 +45,7 @@
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/plausible": "^0.2.3",
     "@types/geojson": "^7946.0.11",
-    "@types/node": "^20.7.1",
+    "@types/node": "^20.8.0",
     "@types/papaparse": "^5.3.9",
     "@types/uuid": "^9.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
@@ -65,7 +65,7 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.3.0",
+    "lint-staged": "^14.0.1",
     "nuxt": "^3.7.4",
     "prettier": "^3.0.3",
     "sass": "^1.68.0",
