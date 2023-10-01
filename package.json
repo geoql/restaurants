@@ -1,6 +1,6 @@
 {
   "name": "@geoql/restaurants",
-  "version": "1.7.0+0c63c79",
+  "version": "1.8.0+8ac1d1e",
   "description": "Hasura & Nuxt based app to find restaurants near you",
   "private": true,
   "type": "module",
