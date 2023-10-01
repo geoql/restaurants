@@ -1,3 +1,27 @@
+# [1.8.0](https://github.com/geoql/restaurants/compare/v1.7.0+0c63c79...v1.8.0) (2023-10-01)
+
+
+### Bug Fixes
+
+* **deps:** bump actions/checkout from 3 to 4 ([6e84909](https://github.com/geoql/restaurants/commit/6e84909f4263b6316a9c6488f524fc82a4e51493))
+* **deps:** bump amannn/action-semantic-pull-request from 5.2.0 to 5.3.0 ([9d1b417](https://github.com/geoql/restaurants/commit/9d1b41751a7ff4b01c4b0e0e28df877b0f86b5fd))
+* **deps:** bump maplibre-gl from 3.2.1 to 3.2.2 ([e0d28a1](https://github.com/geoql/restaurants/commit/e0d28a17810c969783fba98486d4f807bdd46e68))
+* **deps:** bump maplibre-gl from 3.2.2 to 3.3.0 ([8bf4b50](https://github.com/geoql/restaurants/commit/8bf4b50169104c96bc7bab5bdd50e3958287c2c0))
+* **deps:** bump maplibre-gl from 3.3.0 to 3.3.1 ([3040f39](https://github.com/geoql/restaurants/commit/3040f396563dd4e770cbc7833a446de25fa8b0e0))
+* **deps:** bump simple-git from 3.19.1 to 3.20.0 ([99791ac](https://github.com/geoql/restaurants/commit/99791ac4089e1601bffcccf514538b6f860b7446))
+* **deps:** bump terra-draw from 0.0.1-alpha.44 to 0.0.1-alpha.45 ([9fe3de2](https://github.com/geoql/restaurants/commit/9fe3de25f62a0fb88a0a87bfaf4e5eefc6cb9a59))
+* **deps:** bump terra-draw from 0.0.1-alpha.45 to 0.0.1-alpha.47 ([a004a38](https://github.com/geoql/restaurants/commit/a004a38b3855ca3cad9867acd4319fe8b03481a2))
+* **deps:** bump terra-draw from 0.0.1-alpha.47 to 0.0.1-alpha.48 ([c1a2cb1](https://github.com/geoql/restaurants/commit/c1a2cb167596ddabc2495351bf2623c6086a2383))
+* images for basemaps ([8aa56ca](https://github.com/geoql/restaurants/commit/8aa56cac56ff3e1a22c65425e73cfab037c94038))
+
+
+### Features
+
+* **apollo:** use `webSockets` to graphql ([bf9d070](https://github.com/geoql/restaurants/commit/bf9d0705917914a671753501c91b71f3d38be06f))
+* update head script for `terra-draw` ([8661b25](https://github.com/geoql/restaurants/commit/8661b25f0b6ce27306fb0dc813ad3351f8009d00))
+
+
+
 # [1.7.0](https://github.com/geoql/restaurants/compare/v1.6.0...v1.7.0) (2023-08-02)
 
 
