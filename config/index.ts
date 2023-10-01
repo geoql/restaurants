@@ -1,6 +1,8 @@
 import type { NuxtConfig } from 'nuxt/schema';
 import { head } from './head';
 
+const DEV = process.env.NODE_ENV !== 'production';
+
 const app: NuxtConfig['app'] = {
   head,
 };
@@ -8,14 +10,29 @@ const app: NuxtConfig['app'] = {
 const components: NuxtConfig['components'] = false;
 
 const css: NuxtConfig['css'] = [
-  'maplibre-gl-css/maplibre-gl.css',
+  'maplibre-gl.css',
   '~/assets/css/global.css',
   '~/assets/css/fonts.css',
 ];
 
-const devtools: NuxtConfig['devtools'] = { enabled: true };
+const debug: NuxtConfig['debug'] = DEV;
+
+const dev: NuxtConfig['dev'] = DEV;
+
+const devtools: NuxtConfig['devtools'] = {
+  enabled: DEV,
+};
+
+const devServer: NuxtConfig['devServer'] = {
+  port: Number(process.env.NITRO_PORT) || 3000,
+  https: {
+    key: process.env.NITRO_SSL_KEY || './certs/localhost-key.pem',
+    cert: process.env.NITRO_SSL_CERT || './certs/localhost.pem',
+  },
+};
 
 const experimental: NuxtConfig['experimental'] = {
+  asyncEntry: true,
   emitRouteChunkError: 'automatic',
   typescriptBundlerResolution: true,
   viewTransition: true,
@@ -69,9 +86,7 @@ const vite: NuxtConfig['vite'] = {
   resolve: {
     alias: {
       'maplibre-gl': 'maplibre-gl/dist/maplibre-gl-dev.js',
-      'maplibre-gl-css': 'maplibre-gl/dist',
-      'terra-draw':
-        'https://unpkg.com/terra-draw@0.0.1-alpha.44/dist/terra-draw.modern.js',
+      'maplibre-gl.css': 'maplibre-gl/dist/maplibre-gl.css',
     },
   },
 };
@@ -81,6 +96,9 @@ export {
   app,
   components,
   css,
+  debug,
+  dev,
+  devServer,
   devtools,
   experimental,
   nitro,

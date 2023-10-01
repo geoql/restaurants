@@ -4,7 +4,7 @@
     class="z-10 h-full flex items-center justify-center opacity-75"
   >
     <svg
-      class="h-5 w-5 animate-spin text-white"
+      class="h-5 w-5 text-white animate-spin"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

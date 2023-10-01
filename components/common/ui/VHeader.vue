@@ -7,7 +7,7 @@
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 cursor-pointer fill-current transition-colors duration-300"
         viewBox="-6 -6 512 512"
-        @click="$router.push({ name: 'index' })"
+        @click="router.push('/')"
       >
         <defs />
         <defs>
@@ -75,4 +75,5 @@
   const isDark = useDark();
   const mapStore = useMap();
   const toggleDark = useToggle(isDark);
+  const router = useRouter();
 </script>
