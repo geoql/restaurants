@@ -34,7 +34,7 @@
     "click-outside-vue3": "^4.0.1",
     "idb": "^7.1.1",
     "maplibre-gl": "^3.4.1",
-    "pinia": "^2.1.6",
+    "pinia": "^2.1.7",
     "simple-git": "^3.20.0"
   },
   "devDependencies": {
