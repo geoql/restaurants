@@ -38,7 +38,7 @@
     "simple-git": "^3.20.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
+    "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
     "@julr/unocss-preset-forms": "^0.0.5",
     "@nuxt/devtools": "^0.8.5",
