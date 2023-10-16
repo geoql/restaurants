@@ -28,7 +28,7 @@
     "hasura:apply": "npm run hasura migrate apply"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.0",
+    "@pinia/nuxt": "^0.5.1",
     "@turf/area": "^6.5.0",
     "@turf/circle": "^6.5.0",
     "click-outside-vue3": "^4.0.1",
