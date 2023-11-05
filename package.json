@@ -50,7 +50,7 @@
     "@types/uuid": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
-    "@unocss/eslint-config": "^0.57.1",
+    "@unocss/eslint-config": "^0.57.2",
     "@unocss/nuxt": "^0.57.2",
     "@unocss/preset-wind": "^0.57.1",
     "@unocss/reset": "^0.57.2",
