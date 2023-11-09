@@ -55,7 +55,7 @@
     "@unocss/preset-wind": "^0.57.2",
     "@unocss/reset": "^0.57.2",
     "@vinayakkulkarni/prettier-config-vue": "^1.0.0",
-    "@vueuse/core": "^10.5.0",
+    "@vueuse/core": "^10.6.0",
     "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
