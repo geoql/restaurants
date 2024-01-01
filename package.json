@@ -35,7 +35,7 @@
     "idb": "^7.1.1",
     "maplibre-gl": "^3.6.2",
     "pinia": "^2.1.7",
-    "simple-git": "^3.20.0"
+    "simple-git": "^3.22.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
