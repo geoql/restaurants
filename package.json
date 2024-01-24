@@ -45,7 +45,7 @@
     "@nuxtjs/apollo": "^5.0.0-alpha.11",
     "@nuxtjs/plausible": "^0.2.4",
     "@types/geojson": "^7946.0.13",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.6",
     "@types/papaparse": "^5.3.14",
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
