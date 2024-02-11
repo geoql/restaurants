@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-60 overflow-y-auto p-2 scroll-smooth space-y-2"
+    class="h-60 overflow-y-auto scroll-smooth p-2 space-y-2"
     role="menu"
     aria-orientation="vertical"
     aria-labelledby="options-menu"

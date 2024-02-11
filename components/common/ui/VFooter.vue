@@ -4,7 +4,7 @@
   >
     <div class="flex items-center">
       <p class="text-sm">
-        Made with <span class="text-red-5 animate-pulse">❤️</span> by
+        Made with <span class="animate-pulse text-red-5">❤️</span> by
         <a href="https://vinayakkulkarni.dev">Vinayak</a> &copy;
         {{ state.date }}
       </p>
