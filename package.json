@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^18.6.2",
+    "@commitlint/config-conventional": "^19.0.3",
     "@julr/unocss-preset-forms": "^0.1.0",
     "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/apollo": "^5.0.0-alpha.11",
