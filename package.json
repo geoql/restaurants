@@ -45,7 +45,7 @@
     "@nuxtjs/apollo": "^5.0.0-alpha.13",
     "@nuxtjs/plausible": "^0.2.4",
     "@types/geojson": "^7946.0.14",
-    "@types/node": "^20.11.24",
+    "@types/node": "^20.11.25",
     "@types/papaparse": "^5.3.14",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
@@ -74,7 +74,7 @@
     "stylelint": "^16.2.1",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-prettier": "^5.0.0",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.2",
     "unocss-preset-scrollbar": "^0.3.1"
   },
   "author": {
