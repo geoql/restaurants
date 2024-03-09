@@ -4,7 +4,8 @@
     LayerSpecification as AnyLayer,
     GeoJSONSourceSpecification as GeoJSONSourceRaw,
   } from 'maplibre-gl';
-  import { defineComponent, onMounted, PropType, ref, Ref, watch } from 'vue';
+  import { defineComponent, onMounted, ref, watch } from 'vue';
+  import type { PropType, Ref } from 'vue';
   import { injectStrict, MapKey } from '../../../utils';
 
   export default defineComponent({
