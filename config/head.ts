@@ -2,6 +2,9 @@ import type { NuxtAppConfig } from 'nuxt/schema';
 
 const head: NuxtAppConfig['head'] = {
   title: 'Restaurants :: GeoQL',
+  htmlAttrs: {
+    lang: 'en',
+  },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
