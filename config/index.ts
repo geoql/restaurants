@@ -34,7 +34,6 @@ const devServer: NuxtConfig['devServer'] = {
 const experimental: NuxtConfig['experimental'] = {
   asyncEntry: true,
   emitRouteChunkError: 'automatic',
-  typescriptBundlerResolution: true,
   viewTransition: true,
   componentIslands: true,
   payloadExtraction: true,
