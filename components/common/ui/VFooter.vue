@@ -18,13 +18,6 @@
           <div>app:</div>
           v{{ state.appVersion }}
         </div>
-        <div
-          v-if="state.buildVersion"
-          class="w-full flex justify-between text-xs"
-        >
-          <div>build:</div>
-          {{ state.buildVersion }}
-        </div>
       </div>
       <!-- GitHub -->
       <a
@@ -120,10 +113,9 @@
 </template>
 
 <script setup lang="ts">
-  const { $config } = useNuxtApp();
+  const config = useRuntimeConfig();
   const state = reactive({
     date: new Date().getFullYear(),
-    appVersion: $config.public.appVersion.split('+')[0],
-    buildVersion: $config.public.appVersion.split('+')[1],
+    appVersion: config.public.appVersion,
   });
 </script>
