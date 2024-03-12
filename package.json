@@ -1,6 +1,6 @@
 {
   "name": "@geoql/restaurants",
-  "version": "1.8.0+8ac1d1e",
+  "version": "1.8.0",
   "description": "Hasura & Nuxt based app to find restaurants near you",
   "private": true,
   "type": "module",
@@ -34,12 +34,11 @@
     "click-outside-vue3": "^4.0.1",
     "idb": "^8.0.0",
     "maplibre-gl": "^4.1.0",
-    "pinia": "^2.1.7",
-    "simple-git": "^3.22.0"
+    "pinia": "^2.1.7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^19.0.3",
+    "@commitlint/cli": "^19.1.0",
+    "@commitlint/config-conventional": "^19.1.0",
     "@julr/unocss-preset-forms": "^0.1.0",
     "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/apollo": "^5.0.0-alpha.13",
