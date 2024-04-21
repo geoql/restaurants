@@ -40,7 +40,7 @@
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@julr/unocss-preset-forms": "^0.1.0",
-    "@nuxt/devtools": "^1.1.5",
+    "@nuxt/devtools": "^1.2.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/plausible": "^0.2.4",
     "@types/geojson": "^7946.0.14",
