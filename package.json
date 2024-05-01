@@ -42,7 +42,7 @@
     "@julr/unocss-preset-forms": "^0.1.0",
     "@nuxt/devtools": "^1.2.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
-    "@nuxtjs/plausible": "^0.2.4",
+    "@nuxtjs/plausible": "^1.0.0",
     "@types/geojson": "^7946.0.14",
     "@types/node": "^20.12.8",
     "@types/papaparse": "^5.3.14",
