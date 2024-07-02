@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
-    "@turf/area": "^6.5.0",
+    "@turf/area": "^7.0.0",
     "@turf/circle": "^6.5.0",
     "click-outside-vue3": "^4.0.1",
     "idb": "^8.0.0",
