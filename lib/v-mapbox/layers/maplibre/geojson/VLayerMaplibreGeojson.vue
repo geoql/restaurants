@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import type { Ref } from 'vue';
-  import type { Props } from './types';
   import { onMounted, onBeforeUnmount, ref, watch } from 'vue';
   import { injectStrict, MapKey } from '../../../utils';
+  import type { Props } from './types';
 
   const props = withDefaults(defineProps<Props>(), {
     sourceId: 'maplibre.gl-geojson-source',
@@ -11,8 +11,8 @@
     // layer: {} as LayerSpecification,
     before: '',
   });
-  let map = injectStrict(MapKey);
-  let loaded: Ref<boolean> = ref(false);
+  const map = injectStrict(MapKey);
+  const loaded: Ref<boolean> = ref(false);
 
   const layer = {
     ...props.layer,
@@ -51,12 +51,11 @@
   });
 
   const addLayer = (): void => {
-    console.log('props: ', props);
     map.value.addSource(layer.source, props.source);
     map.value.addLayer(layer, props.before);
   };
 </script>
 
 <template>
-  <slot />
+  <slot></slot>
 </template>
