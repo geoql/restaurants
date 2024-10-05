@@ -1,4 +1,5 @@
-@import url('@unocss/reset/tailwind.css');
+@import '@unocss/reset/tailwind.css';
+@import 'maplibre-gl/dist/maplibre-gl.css';
 
 html {
   font-family:

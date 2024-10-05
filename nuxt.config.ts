@@ -14,7 +14,6 @@ import {
   runtimeConfig,
   ssr,
   typescript,
-  vite,
 } from './config';
 
 export default defineNuxtConfig({
@@ -33,5 +32,4 @@ export default defineNuxtConfig({
   runtimeConfig,
   ssr,
   typescript,
-  vite,
 });

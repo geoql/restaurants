@@ -10,7 +10,6 @@ const app: NuxtConfig['app'] = {
 const components: NuxtConfig['components'] = false;
 
 const css: NuxtConfig['css'] = [
-  'maplibre-gl.css',
   '~/assets/css/global.css',
   '~/assets/css/fonts.css',
 ];
@@ -32,12 +31,13 @@ const devServer: NuxtConfig['devServer'] = {
 };
 
 const experimental: NuxtConfig['experimental'] = {
-  asyncEntry: true,
-  emitRouteChunkError: 'automatic',
-  viewTransition: true,
-  componentIslands: true,
-  payloadExtraction: true,
+  renderJsonPayloads: true,
+  asyncContext: true,
   typedPages: true,
+  buildCache: true,
+  asyncEntry: true,
+  viewTransition: true,
+  payloadExtraction: true,
 };
 
 const nitro: NuxtConfig['nitro'] = {
@@ -81,15 +81,6 @@ const typescript: NuxtConfig['typescript'] = {
   shim: false,
 };
 
-const vite: NuxtConfig['vite'] = {
-  resolve: {
-    alias: {
-      'maplibre-gl': 'maplibre-gl/dist/maplibre-gl-dev.js',
-      'maplibre-gl.css': 'maplibre-gl/dist/maplibre-gl.css',
-    },
-  },
-};
-
 export { modules } from './modules';
 export {
   app,
@@ -106,5 +97,4 @@ export {
   runtimeConfig,
   ssr,
   typescript,
-  vite,
 };
